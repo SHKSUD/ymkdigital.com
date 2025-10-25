@@ -1,0 +1,23 @@
+<div class="s-blog__grid">
+    <a href="blog-101.html" class="s-blog__card">
+        <div class="s-blog__card-image"></div>
+        <div class="s-blog__card-content">
+            <h3>How to Turn Your Website Into a Lead Machine</h3>
+            <p>Stop treating your site like a brochure. Here are five actionable steps to make it your best salesperson.</p>
+        </div>
+    </a>
+    <a href="blog-102.html" class="s-blog__card">
+        <div class="s-blog__card-image"></div>
+        <div class="s-blog__card-content">
+            <h3>The Only 3 Content Pillars You'll Ever Need</h3>
+            <p>Simplify your content strategy and build authority by focusing on these core areas.</p>
+        </div>
+    </a>
+    <a href="blog-103.html" class="s-blog__card">
+        <div class="s-blog__card-image"></div>
+        <div class="s-blog__card-content">
+            <h3>"Trash Leads" Are Costing You Money. Here's How to Fix It.</h3>
+            <p>Qualify your audience and build a funnel that delivers clients, not just clicks.</p>
+        </div>
+    </a>
+</div>

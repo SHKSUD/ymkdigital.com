@@ -1,0 +1,100 @@
+/* --- Global Styles & Tokens (Borrowed from styles.css) --- */
+:root {
+  --color-primary-start: #ff7a00;
+  --color-primary-end: #ff9500;
+  --color-primary: var(--color-primary-start);
+  --color-bg: #f9f9f9;
+  --color-white: #ffffff;
+  --color-text: #111111;
+  --color-muted: #6c757d;
+  --radius: 8px;
+  --gap: 1.5rem;
+}
+
+body {
+    font-family: 'Helvetica Neue', system-ui, -apple-system, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    margin: 0;
+}
+
+.container {
+    max-width: 700px; /* Narrower for a form */
+    margin: 0 auto;
+    padding: 0 var(--gap);
+}
+
+/* --- Form Section Styling --- */
+.letme-section {
+    padding: 4rem 0;
+}
+
+.letme-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+}
+
+.letme-subtitle {
+    font-size: 1.25rem;
+    text-align: center;
+    color: var(--color-muted);
+    margin-bottom: 3rem;
+}
+
+.letme-form {
+    background: var(--color-white);
+    padding: 2.5rem;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-family: inherit;
+    border: 1px solid #ccc;
+    border-radius: var(--radius);
+    box-sizing: border-box; /* Important */
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.btn-submit {
+    display: inline-block;
+    width: 100%;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, var(--color-primary-end), var(--color-primary-start));
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: var(--radius);
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
+}
+
+.btn-submit:hover {
+    transform: scale(1.02);
+    background: linear-gradient(135deg, var(--color-primary-start), var(--color-primary-end));
+    box-shadow: 0 4px 20px rgba(255, 122, 0, 0.4);
+}
