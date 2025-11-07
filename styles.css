@@ -116,8 +116,6 @@ body {
 }
 
 /* --- 3. How I Do It --- */
-<style>
-  /* How section — premium heading / number treatment */
   .s-how { padding: 6rem 2rem; background: #fff; color: #111; }
   .s-how h2 { font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
 
@@ -207,7 +205,6 @@ body {
     .s-how__grid { gap: 1rem; }
     .s-how__title { font-size: 1rem; }
   }
-</style>
 
 /* --- 4. What to Expect --- */
 .s-expect__inner {
@@ -410,3 +407,4 @@ body {
     }
 
 }
+
