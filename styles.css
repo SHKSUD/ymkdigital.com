@@ -116,24 +116,98 @@ body {
 }
 
 /* --- 3. How I Do It --- */
-.s-how {
-    text-align: center;
-}
-.s-how__title {
-    font-size: 2.5rem;
-    margin-bottom: 2.5rem;
-}
-.s-how__grid {
+<style>
+  /* How section — premium heading / number treatment */
+  .s-how { padding: 6rem 2rem; background: #fff; color: #111; }
+  .s-how h2 { font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+
+  .s-how__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--gap);
-}
-.s-how__step {
-    background: var(--color-white);
-    padding: 2rem;
-    border-radius: var(--radius);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+    margin-top: 1rem;
+  }
+
+  .s-how__card {
+    background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.00));
+    border-radius: 12px;
+    padding: 1.25rem;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.6);
+    transition: transform .28s ease, box-shadow .28s ease;
+  }
+  .s-how__card:hover { transform: translateY(-6px); box-shadow: 0 14px 30px rgba(16,24,40,0.06); }
+
+  .s-how__index {
+    display: inline-block;
+    font-weight: 800;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+    color: #111;
+    letter-spacing: .08em;
+    padding: .12rem .5rem;
+    border-radius: 8px;
+    background: linear-gradient(90deg, rgba(0,0,0,0.04), rgba(0,0,0,0.01));
+    width: fit-content;
+  }
+
+  /* Gradient text heading with animated sheen */
+  .s-how__title {
+    font-size: 1.125rem;
+    font-weight: 800;
+    line-height: 1.08;
+    margin: 0;
+    letter-spacing: -0.01em;
+    color: #0b1020; /* fallback */
+    background: linear-gradient(90deg, #0b1020 0%, #2b2f45 40%, #0b1020 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  /* subtle metallic sheen moving left to right */
+  .s-how__title::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-18deg);
+    filter: blur(.6px);
+    transition: none;
+    animation: sheen 2.8s ease-in-out infinite;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+  @keyframes sheen {
+    0% { left: -60%; opacity: 0; }
+    10% { opacity: 0.9; }
+    50% { left: 120%; opacity: 0.5; }
+    100% { left: 120%; opacity: 0; }
+  }
+
+  .s-how__copy {
+    font-size: .95rem;
+    color: #374151;
+    margin-top: .5rem;
+    line-height: 1.5;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 520px) {
+    .s-how__grid { gap: 1rem; }
+    .s-how__title { font-size: 1rem; }
+  }
+</style>
 
 /* --- 4. What to Expect --- */
 .s-expect__inner {
@@ -334,4 +408,5 @@ body {
         opacity: 1;
         transform: none;
     }
+
 }
