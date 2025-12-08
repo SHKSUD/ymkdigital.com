@@ -109,12 +109,20 @@ body {
     background-color: var(--color-white);
 }
 .s-hero__title {
-    .s-hero__title {
-    /* Reduced size to fit long sentences on one line */
-    font-size: clamp(1.8rem, 4vw, 3rem); 
-    margin: 0 auto 1.5rem; /* Centered margin */
+    /* 1. Force text to stay on one line */
+    white-space: nowrap;
+    
+    /* 2. Responsive scaling:
+       Minimum: 1.5rem (mobile)
+       Preferred: 4vw (scales with screen)
+       Maximum: 3.5rem (desktop) */
+    font-size: clamp(1.5rem, 4vw, 3.5rem);
+
+    /* 3. Centering & Spacing */
+    margin: 0 auto 1.5rem;
     line-height: 1.2;
-    max-width: 900px; /* Optional: constrains width for better readability */
+    width: 100%;
+    overflow: hidden; /* Safety net: hides scrollbar if text accidentally overflows */
 }
 .s-hero__typewriter-text {
     color: var(--color-primary);
@@ -439,6 +447,7 @@ body {
     }
 
 }
+
 
 
 
