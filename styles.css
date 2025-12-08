@@ -442,3 +442,37 @@ body {
         transform: none;
     }
 }
+
+/* --- Floating WhatsApp Button Style --- */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25D366; /* WhatsApp Green */
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 40px; /* Size of the emoji/text */
+    line-height: 60px; /* Centers the content vertically */
+    box-shadow: 2px 2px 3px #999;
+    z-index: 9999; /* Ensure it floats above all other content */
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 30px;
+        line-height: 50px;
+    }
+}
