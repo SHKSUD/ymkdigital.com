@@ -39,18 +39,20 @@ body {
     text-align: center;
     padding: 0.75rem 0;
     animation: fadeIn 1s ease-in-out;
+    /* --- Sticky Header --- */
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
+/* Fixed Logo/CTA Alignment */
 .s-header__inner {
     display: flex;
-    justify-content: space-between; /* Ensures Logo left, CTA right */
     align-items: center;
-    flex-wrap: wrap; /* Allows wrapping on very small screens */
-    gap: 1rem;
+    justify-content: space-between; /* Logo left, CTA right */
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 /* --- LOGO STYLES (Fixed) --- */
@@ -60,11 +62,10 @@ body {
     text-decoration: none;
     flex-shrink: 0; /* Prevents logo from squishing */
 }
-
 .s-header__logo img {
-    height: 40px;       
-    width: auto;       
-    display: block;
+  height: 40px;       
+  width: auto;        
+  display: block;
 }
 
 .s-header__text {
@@ -72,8 +73,6 @@ body {
     font-weight: 600;
     flex-grow: 1;
     text-align: center;
-    /* Optional: hides text on tiny mobile screens if it gets too crowded */
-    min-width: 200px; 
 }
 
 .s-header__cta {
@@ -88,7 +87,6 @@ body {
     transition: all 0.2s;
     white-space: nowrap;
 }
-
 .s-header__cta:hover {
     background: #f1f1f1;
     transform: scale(1.05);
@@ -100,9 +98,10 @@ body {
         flex-wrap: nowrap;
     }
     .s-header__text {
-        text-align: center; /* Keep text centered between logo and CTA */
+        text-align: center;
     }
 }
+
 
 /* --- 2. Landing Hero --- */
 .s-hero {
@@ -114,23 +113,20 @@ body {
 
 /* --- FIXED HERO TITLE (Single Line) --- */
 .s-hero__title {
-    /* Responsive font size: grows with screen but has caps */
+    /* Force text to stay on one line */
+    white-space: nowrap; 
+    /* Reduced size to fit long sentences on one line and scale responsively */
     font-size: clamp(1.5rem, 4vw, 3.5rem); 
     margin: 0 auto 1.5rem;
     line-height: 1.2;
-    
-    /* Force single line */
-    white-space: nowrap; 
     width: 100%;
-    
-    /* Center alignment helpers */
+    /* Safety net */
     display: block;
 }
 
 .s-hero__typewriter-text {
     color: var(--color-primary);
 }
-
 .s-hero__cursor {
     display: inline-block;
     width: 4px;
@@ -141,14 +137,12 @@ body {
     vertical-align: bottom;
     margin-left: 4px;
 }
-
 .s-hero__subtitle {
     font-size: 1.25rem;
     color: var(--color-muted);
     max-width: 600px;
     margin: 0 auto;
 }
-
 .s-hero__cta {
     margin-top: 2rem;
 }
@@ -454,10 +448,10 @@ body {
     color: #FFF;
     border-radius: 50px;
     text-align: center;
-    font-size: 40px; /* Size of the emoji/text */
-    line-height: 60px; /* Centers the content vertically */
+    font-size: 40px; 
+    line-height: 60px; 
     box-shadow: 2px 2px 3px #999;
-    z-index: 9999; /* Ensure it floats above all other content */
+    z-index: 9999; 
     text-decoration: none;
     transition: transform 0.2s;
 }
