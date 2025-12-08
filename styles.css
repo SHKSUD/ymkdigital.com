@@ -109,9 +109,12 @@ body {
     background-color: var(--color-white);
 }
 .s-hero__title {
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    margin: 0 0 1rem;
-    line-height: 1.1;
+    .s-hero__title {
+    /* Reduced size to fit long sentences on one line */
+    font-size: clamp(1.8rem, 4vw, 3rem); 
+    margin: 0 auto 1.5rem; /* Centered margin */
+    line-height: 1.2;
+    max-width: 900px; /* Optional: constrains width for better readability */
 }
 .s-hero__typewriter-text {
     color: var(--color-primary);
@@ -436,5 +439,6 @@ body {
     }
 
 }
+
 
 
