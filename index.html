@@ -1,278 +1,1558 @@
 <!DOCTYPE html>
+<!--
+  YMK DIGITAL  ·  index.html  ·  Push-Ready v6
+  ──────────────────────────────────────────────
+  BEFORE GOING LIVE — replace these 5 things:
+  1. Photo      → #about  · swap .photo-ghost div
+  2. Calendar   → #contact · swap .cal-ghost div with Calendly script
+  3. Magnet     → handleMagnet() · POST to Mailchimp / ConvertKit
+  4. Products   → 3 × href="#buy" · paste Gumroad / Instamojo URLs
+  5. Socials    → footer  · replace href="#ln" and href="#ig"
+-->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Growth Funnels for SMBs | YM Blogs Consultancy</title>
-    <meta name="description" content="I help SMBs and startups install scalable funnels that generate consistent, measurable growth. Book your free strategy call.">
-    <meta name="keywords" content="growth funnels, lead generation, content strategy, smb marketing, startup consultancy">
-    <link rel="canonical" href="https://www.your-domain.com/"> 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Yashasvi Meenu Kashyap — Brand Strategy & Creative Consulting</title>
+<meta name="description" content="Senior brand strategist with 15+ years. Samsung, Honda, Pepsi, Gujarat Tourism. Helping SMBs build brands that convert and content systems that grow.">
+<meta name="theme-color" content="#FAFAF8">
 
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,600&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.your-domain.com/">
-    <meta property="og:title" content="Growth Funnels for SMBs | YM Blogs Consultancy">
-    <meta property="og:description" content="Stop guessing, start growing. I build scalable funnels that deliver consistent, measurable results for SMBs.">
-    <meta property="og:image" content="https://www.your-domain.com/og-image.jpg"> 
+<style>
+/* ══════════════════════════════════════════
+   RESET
+══════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{
+  font-family:'Figtree',system-ui,sans-serif;
+  font-weight:400;
+  background:#FAFAF8;
+  color:#111110;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  /* safe area for notched phones */
+  padding-bottom:env(safe-area-inset-bottom);
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+::selection{background:#D4570A;color:#fff}
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://www.your-domain.com/">
-    <meta name="twitter:title" content="Growth Funnels for SMBs | YM Blogs Consultancy">
-    <meta name="twitter:description" content="Stop guessing, start growing. I build scalable funnels that deliver consistent, measurable results for SMBs.">
-    <meta name="twitter:image" content="https://www.your-domain.com/og-image.jpg"> 
-    
-    <link rel="stylesheet" href="styles.css">
+/* ══════════════════════════════════════════
+   TOKENS  — Jony Ive palette: warm nothing + one precise burn
+══════════════════════════════════════════ */
+:root{
+  --bg:       #FAFAF8;
+  --surface:  #F3F3F0;
+  --border:   #E5E4DF;
+  --muted:    #79786F;
+  --ink:      #111110;
+  --black:    #0A0A09;
+  --o:        #D4570A;   /* the orange — used sparingly */
+  --o-soft:   rgba(212,87,10,.10);
+  --o-ring:   rgba(212,87,10,.22);
+  --white:    #FFFFFF;
+  --r-sm:     12px;
+  --r-md:     18px;
+  --r-lg:     24px;
+  --r-xl:     32px;
+  --shadow-xs:0 1px 3px rgba(0,0,0,.06);
+  --shadow-sm:0 4px 16px rgba(0,0,0,.07);
+  --shadow-md:0 12px 36px rgba(0,0,0,.09);
+  --ease:     cubic-bezier(.22,1,.36,1);
+}
+
+/* ══════════════════════════════════════════
+   LAYOUT
+══════════════════════════════════════════ */
+.wrap    {max-width:1080px;margin:0 auto;padding:0 clamp(1.2rem,5vw,2.75rem)}
+.wrap-lg {max-width:1200px;margin:0 auto;padding:0 clamp(1.2rem,5vw,2.75rem)}
+
+/* ══════════════════════════════════════════
+   TYPE  — Fraunces = editorial warmth, Figtree = functional clarity
+══════════════════════════════════════════ */
+.display{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto}
+.d-xl{font-size:clamp(2.8rem,11vw,7.5rem);line-height:1.0;letter-spacing:-.03em;font-weight:300}
+.d-lg{font-size:clamp(2rem,6vw,4.2rem);line-height:1.06;letter-spacing:-.025em;font-weight:300}
+.d-md{font-size:clamp(1.5rem,4vw,2.5rem);line-height:1.12;letter-spacing:-.02em;font-weight:300}
+.eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--o)}
+.body-lg{font-size:clamp(1rem,2.5vw,1.1rem);color:var(--muted);line-height:1.8;font-weight:300}
+.body-sm{font-size:.875rem;color:var(--muted);line-height:1.75;font-weight:300}
+
+/* ══════════════════════════════════════════
+   BUTTONS  — Jony Ive: one clear hierarchy, nothing decorative
+══════════════════════════════════════════ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  font-family:'Figtree',sans-serif;font-size:.82rem;font-weight:500;letter-spacing:.02em;
+  padding:.9rem 2rem;border-radius:980px;
+  transition:all .22s var(--ease);cursor:pointer;
+  min-height:48px;white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;
+  border:none;
+}
+.btn svg{width:14px;height:14px;flex-shrink:0;transition:transform .2s var(--ease)}
+.btn:hover svg{transform:translateX(3px)}
+
+.btn-primary{background:var(--o);color:#fff;box-shadow:0 2px 12px var(--o-ring)}
+.btn-primary:hover{background:#b94608;box-shadow:0 4px 20px var(--o-ring);transform:translateY(-1px)}
+.btn-primary:active{transform:translateY(0);box-shadow:0 2px 8px var(--o-ring)}
+
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:var(--black);transform:translateY(-1px)}
+
+.btn-outline{background:transparent;border:1.5px solid var(--border);color:var(--ink)}
+.btn-outline:hover{border-color:var(--ink)}
+
+.btn-ghost-white{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);color:#fff}
+.btn-ghost-white:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.45)}
+
+.btn-surface{background:var(--surface);color:var(--ink);box-shadow:var(--shadow-xs)}
+.btn-surface:hover{background:var(--border)}
+
+/* ══════════════════════════════════════════
+   STICKY MOBILE CTA  — the #1 lead-gen lever on mobile
+══════════════════════════════════════════ */
+.sticky-cta{
+  position:fixed;bottom:calc(1.25rem + env(safe-area-inset-bottom));
+  left:50%;transform:translateX(-50%) translateY(80px);
+  z-index:800;
+  background:var(--o);color:#fff;
+  padding:.8rem 2rem;border-radius:980px;
+  font-size:.82rem;font-weight:600;letter-spacing:.03em;
+  box-shadow:0 8px 32px rgba(212,87,10,.35);
+  display:flex;align-items:center;gap:.6rem;
+  opacity:0;transition:transform .45s var(--ease),opacity .45s var(--ease);
+  pointer-events:none;white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;
+}
+.sticky-cta.visible{transform:translateX(-50%) translateY(0);opacity:1;pointer-events:auto}
+.sticky-cta svg{width:13px;height:13px}
+/* only on mobile */
+@media(min-width:768px){.sticky-cta{display:none}}
+
+/* ══════════════════════════════════════════
+   NAVIGATION
+══════════════════════════════════════════ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  height:54px;display:flex;align-items:center;
+  transition:background .4s var(--ease),box-shadow .4s var(--ease);
+}
+#nav.on-hero{background:transparent}
+#nav.frosted{
+  background:rgba(250,250,248,.9);
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  box-shadow:0 1px 0 var(--border);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
+.nav-logo img{height:26px;width:auto;display:block;transition:filter .3s}
+.nav-logo img.invert{filter:invert(1) brightness(2)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.78rem;font-weight:500;color:var(--muted);transition:color .2s;letter-spacing:.01em}
+.nav-links a:hover{color:var(--ink)}
+.nav-links.on-dark a{color:rgba(255,255,255,.55)}
+.nav-links.on-dark a:hover{color:#fff}
+.nav-actions{display:flex;align-items:center;gap:.75rem}
+.ham{display:none;flex-direction:column;gap:4px;padding:8px;cursor:pointer}
+.ham span{display:block;width:20px;height:1.5px;border-radius:2px;transition:.22s var(--ease)}
+.ham.light span{background:#fff}
+.ham.dark span{background:var(--ink)}
+.ham.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.ham.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+
+/* mobile overlay */
+.mob-overlay{
+  display:none;position:fixed;inset:0;z-index:850;
+  background:rgba(10,10,9,.97);
+  flex-direction:column;align-items:center;justify-content:center;
+  gap:1.75rem;
+}
+.mob-overlay.open{display:flex}
+.mob-overlay a{
+  font-family:'Fraunces',serif;font-size:2rem;font-weight:300;
+  color:rgba(255,255,255,.55);transition:color .2s;
+}
+.mob-overlay a:hover,.mob-overlay a.cta-link{color:#fff}
+.mob-overlay .cta-link{color:var(--o) !important}
+.mob-rule{width:28px;height:1px;background:rgba(255,255,255,.1)}
+
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+#hero{
+  background:var(--black);
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  overflow:hidden;position:relative;
+  padding-top:54px;
+}
+.hero-noise{
+  position:absolute;inset:0;pointer-events:none;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:400px 400px;
+}
+.hero-gradient{
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 70% 60% at 75% 35%, rgba(212,87,10,.1) 0%, transparent 60%),
+             radial-gradient(ellipse 50% 40% at 15% 70%, rgba(212,87,10,.05) 0%, transparent 55%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding:clamp(3rem,8vh,5rem) 0 clamp(3rem,6vh,4rem);
+}
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:.65rem;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:980px;padding:.35rem .9rem .35rem .55rem;
+  margin-bottom:2rem;
+}
+.hero-kicker-dot{width:6px;height:6px;border-radius:50%;background:var(--o);flex-shrink:0}
+.hero-kicker span{font-size:.72rem;font-weight:400;color:rgba(255,255,255,.38);letter-spacing:.06em}
+.hero-h1{
+  color:#fff;margin-bottom:1.75rem;
+  font-family:'Fraunces',serif;
+  font-size:clamp(2.8rem,11vw,7.5rem);
+  line-height:1.0;letter-spacing:-.03em;font-weight:300;
+}
+.hero-h1 em{
+  font-style:italic;
+  background:linear-gradient(135deg,var(--o) 0%,#f2843d 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-sub{
+  max-width:520px;margin-bottom:2.25rem;
+  font-size:clamp(.95rem,2.5vw,1.1rem);color:rgba(255,255,255,.4);
+  line-height:1.75;font-weight:300;
+}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:3.5rem}
+.hero-rule{height:1px;background:rgba(255,255,255,.07);margin-bottom:2.25rem}
+.hero-stats{display:flex;gap:0;flex-wrap:wrap}
+.stat{flex:1;min-width:100px;padding:0 clamp(1rem,3vw,2rem) 1rem 0}
+.stat:last-child{padding-right:0}
+.stat-n{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:300;
+  font-size:clamp(2rem,5vw,3rem);
+  color:#fff;line-height:1;margin-bottom:.25rem;
+}
+.stat-n sup{font-size:.4em;color:var(--o);vertical-align:super;font-style:normal}
+.stat-l{font-size:.68rem;color:rgba(255,255,255,.28);letter-spacing:.05em;font-weight:400}
+
+/* ══════════════════════════════════════════
+   TICKER
+══════════════════════════════════════════ */
+.ticker{overflow:hidden;background:var(--white);border-bottom:1px solid var(--border);padding:.85rem 0}
+.ticker-inner{display:flex;gap:0;width:max-content;animation:ticker 28s linear infinite}
+.ti{display:flex;align-items:center;gap:.6rem;padding:0 2.5rem;font-size:.75rem;font-weight:500;color:var(--muted);white-space:nowrap;letter-spacing:.04em}
+.ti-dot{width:3px;height:3px;border-radius:50%;background:var(--o);opacity:.6}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ══════════════════════════════════════════
+   SECTIONS — generous breathing room
+══════════════════════════════════════════ */
+.sec{padding:clamp(4.5rem,9vw,8rem) 0}
+.sec-sm{padding:clamp(3rem,6vw,5rem) 0}
+.sec-white{background:var(--white)}
+.sec-surface{background:var(--surface)}
+.sec-dark{background:var(--black);color:#fff}
+
+/* ══════════════════════════════════════════
+   PROBLEM SECTION — editorial numbered list
+══════════════════════════════════════════ */
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,7rem);align-items:start}
+.problem-pull-quote{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:300;
+  font-size:clamp(1.25rem,3vw,1.85rem);line-height:1.5;color:var(--ink);
+  border-left:2px solid var(--o);padding-left:1.25rem;margin:2rem 0;
+}
+.pain-list{display:flex;flex-direction:column}
+.pain-item{
+  display:grid;grid-template-columns:auto 1fr;gap:.9rem;
+  padding:1.1rem 0;border-bottom:1px solid var(--border);align-items:start;
+}
+.pain-item:first-child{border-top:1px solid var(--border)}
+.pain-idx{font-size:.65rem;font-weight:700;color:var(--o);letter-spacing:.1em;padding-top:.15rem;white-space:nowrap}
+.pain-text{font-size:.9rem;color:var(--muted);line-height:1.65;font-weight:300}
+
+/* ══════════════════════════════════════════
+   SERVICES — keep the accordion, reskin
+══════════════════════════════════════════ */
+.svc-accordion{
+  border:1px solid var(--border);border-radius:var(--r-lg);
+  overflow:hidden;background:var(--white);
+  box-shadow:var(--shadow-sm);
+}
+.svc-row{
+  padding:clamp(1.25rem,3vw,1.75rem) clamp(1.25rem,3vw,2rem);
+  display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:center;
+  cursor:pointer;transition:background .18s;border-bottom:1px solid var(--border);
+  -webkit-tap-highlight-color:transparent;
+}
+.svc-row:last-of-type{border-bottom:none}
+.svc-row:hover{background:var(--surface)}
+.svc-row.featured-row{background:var(--o);color:#fff}
+.svc-row.featured-row:hover{background:#b94608}
+.svc-badge{
+  font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:.25rem .75rem;border-radius:980px;display:inline-flex;
+  margin-bottom:.4rem;align-self:flex-start;
+}
+.badge-def{background:var(--surface);color:var(--muted);border:1px solid var(--border)}
+.badge-hot{background:rgba(255,255,255,.18);color:rgba(255,255,255,.8)}
+.badge-new{background:var(--o-soft);color:var(--o);border:1px solid var(--o-ring)}
+.svc-title{font-family:'Fraunces',serif;font-size:clamp(1.1rem,2.5vw,1.5rem);font-weight:300;letter-spacing:-.01em}
+.svc-sub{font-size:.8rem;font-weight:300;color:var(--muted);margin-top:.2rem}
+.svc-row.featured-row .svc-sub{color:rgba(255,255,255,.55)}
+.svc-price{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:300;text-align:right;white-space:nowrap}
+.svc-price small{display:block;font-family:'Figtree',sans-serif;font-size:.68rem;font-weight:300;color:var(--muted);margin-top:.1rem}
+.svc-row.featured-row .svc-price{color:#fff}
+.svc-row.featured-row .svc-price small{color:rgba(255,255,255,.45)}
+.svc-chevron{transition:transform .22s var(--ease);opacity:.35}
+.svc-row.open .svc-chevron{transform:rotate(180deg);opacity:.8}
+
+.svc-panel{
+  display:none;padding:0 clamp(1.25rem,3vw,2rem) clamp(1.25rem,2.5vw,1.75rem);
+  border-bottom:1px solid var(--border);background:var(--surface);
+}
+.svc-panel.open{display:block}
+.svc-panel-inner{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;padding-top:1.25rem}
+.svc-items{display:flex;flex-direction:column;gap:.55rem}
+.svc-items li{
+  font-size:.82rem;color:var(--muted);display:flex;
+  align-items:flex-start;gap:.6rem;font-weight:300;line-height:1.5;
+}
+.svc-items li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--o);flex-shrink:0;margin-top:.45rem}
+
+/* ══════════════════════════════════════════
+   ABOUT
+══════════════════════════════════════════ */
+.about-grid{display:grid;grid-template-columns:2fr 3fr;gap:clamp(3rem,6vw,6rem);align-items:start}
+.photo-sticky{position:sticky;top:5rem}
+.photo-frame{
+  aspect-ratio:3/4;border-radius:var(--r-xl);overflow:hidden;
+  background:var(--surface);border:1px solid var(--border);
+  box-shadow:var(--shadow-sm);position:relative;
+}
+.photo-ghost{
+  width:100%;height:100%;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:.75rem;color:var(--border);
+}
+.photo-ghost svg{width:40px;height:40px}
+.photo-ghost p{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--border)}
+.photo-overlay{
+  position:absolute;bottom:0;left:0;right:0;padding:1.5rem;
+  background:linear-gradient(transparent,rgba(10,10,9,.72));
+}
+.photo-overlay strong{display:block;font-family:'Fraunces',serif;font-size:1rem;font-weight:300;color:#fff}
+.photo-overlay span{font-size:.68rem;color:rgba(255,255,255,.5)}
+
+.about-text h2{margin-bottom:1.5rem}
+.about-text p{font-size:.93rem;color:var(--muted);line-height:1.85;font-weight:300;margin-bottom:1.2rem}
+.about-text p strong{color:var(--ink);font-weight:500}
+
+.chip-row{display:flex;flex-wrap:wrap;gap:.4rem;margin:1.25rem 0}
+.chip{font-size:.68rem;font-weight:500;padding:.28rem .75rem;border-radius:980px;background:var(--surface);border:1px solid var(--border);color:var(--muted)}
+
+.agency-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.75rem}
+.agency-chip{font-size:.68rem;font-weight:500;padding:.28rem .75rem;border-radius:6px;background:var(--surface);border:1px solid var(--border);color:var(--muted)}
+
+.ventures{display:flex;flex-direction:column;gap:.6rem;margin-top:1rem}
+.venture-row{
+  display:flex;align-items:center;gap:.85rem;padding:.85rem 1.1rem;
+  border-radius:var(--r-sm);border:1px solid var(--border);background:var(--white);
+  transition:border-color .2s;
+}
+.venture-row:hover{border-color:var(--o)}
+.v-dot{width:7px;height:7px;border-radius:50%;background:var(--o);flex-shrink:0}
+.v-name{font-size:.82rem;font-weight:500;color:var(--ink)}
+.v-desc{font-size:.75rem;color:var(--muted);margin-left:auto;font-weight:300}
+
+/* ══════════════════════════════════════════
+   AI FOR SMBS — live-powered via Claude API
+══════════════════════════════════════════ */
+.ai-intro{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end;margin-bottom:3rem}
+.ai-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+
+.ai-card{
+  background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);
+  padding:1.5rem;display:flex;flex-direction:column;gap:.75rem;
+  box-shadow:var(--shadow-xs);transition:transform .22s var(--ease),box-shadow .22s var(--ease);
+  min-height:200px;
+}
+.ai-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm)}
+
+/* skeleton loaders */
+.ai-card.loading .ai-tag,
+.ai-card.loading .ai-title,
+.ai-card.loading .ai-body,
+.ai-card.loading .ai-impact{
+  border-radius:6px;
+  background:linear-gradient(90deg,var(--surface) 25%,var(--border) 50%,var(--surface) 75%);
+  background-size:200% 100%;
+  animation:shimmer 1.4s infinite;
+  color:transparent !important;
+}
+.ai-card.loading .ai-tag{height:20px;width:60px}
+.ai-card.loading .ai-title{height:44px;width:100%}
+.ai-card.loading .ai-body{height:60px;width:100%}
+.ai-card.loading .ai-impact{height:32px;width:85%}
+@keyframes shimmer{to{background-position:-200% 0}}
+
+.ai-tag{
+  font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--o);background:var(--o-soft);padding:.22rem .65rem;
+  border-radius:980px;align-self:flex-start;
+}
+.ai-title{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:300;color:var(--ink);line-height:1.3;letter-spacing:-.01em}
+.ai-body{font-size:.8rem;color:var(--muted);line-height:1.65;font-weight:300;flex:1}
+.ai-impact{
+  font-size:.75rem;font-weight:500;color:var(--o);
+  display:flex;align-items:center;gap:.4rem;
+  padding:.5rem .75rem;background:var(--o-soft);border-radius:8px;
+  line-height:1.4;
+}
+.ai-impact::before{content:'↗';font-size:.8rem}
+.ai-refresh{
+  display:flex;align-items:center;gap:.5rem;
+  font-size:.72rem;color:var(--muted);margin-top:1.5rem;
+  cursor:pointer;transition:color .2s;width:fit-content;
+}
+.ai-refresh:hover{color:var(--o)}
+.ai-refresh svg{width:13px;height:13px;transition:transform .4s var(--ease)}
+.ai-refresh:hover svg{transform:rotate(180deg)}
+
+/* ══════════════════════════════════════════
+   LEAD MAGNET  — the main conversion event
+══════════════════════════════════════════ */
+.magnet-wrap{
+  background:var(--black);border-radius:var(--r-xl);
+  padding:clamp(2.5rem,5vw,4.5rem);
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,5vw,5rem);
+  align-items:center;
+  box-shadow:var(--shadow-md);
+}
+.magnet-left h2{color:#fff;margin-bottom:.9rem}
+.magnet-left p{color:rgba(255,255,255,.4);font-size:.93rem;line-height:1.75;font-weight:300;margin-bottom:1.4rem}
+.magnet-points{display:flex;flex-direction:column;gap:.65rem}
+.magnet-points li{font-size:.82rem;color:rgba(255,255,255,.45);display:flex;gap:.65rem;align-items:flex-start;font-weight:300}
+.magnet-points li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--o);flex-shrink:0;margin-top:.45rem}
+
+.magnet-form{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--r-md);padding:1.75rem;position:relative;overflow:hidden;
+}
+.magnet-form::before{
+  content:'';position:absolute;top:0;left:15%;right:15%;height:1.5px;
+  background:linear-gradient(90deg,transparent,var(--o),transparent);
+}
+.magnet-preview{background:var(--o);border-radius:var(--r-sm);padding:1.25rem;margin-bottom:1.5rem}
+.magnet-preview .mp-eye{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.3rem}
+.magnet-preview h4{font-family:'Fraunces',serif;font-style:italic;font-size:1rem;color:#fff;line-height:1.3;font-weight:300}
+.mf{margin-bottom:.75rem}
+.mf label{display:block;font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.28rem}
+.mf input{
+  width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);
+  border-radius:10px;padding:.78rem .95rem;font-size:.875rem;color:#fff;
+  font-family:'Figtree',sans-serif;outline:none;transition:border-color .2s;min-height:46px;
+}
+.mf input:focus{border-color:var(--o);background:rgba(212,87,10,.07)}
+.mf input::placeholder{color:rgba(255,255,255,.15)}
+.mf-note{font-size:.65rem;color:rgba(255,255,255,.18);text-align:center;margin-top:.75rem;line-height:1.5}
+
+/* ══════════════════════════════════════════
+   PROCESS  — clean numbered columns
+══════════════════════════════════════════ */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3.5rem;position:relative}
+.process-grid::before{content:'';position:absolute;top:.6rem;left:0;right:0;height:1px;background:var(--border)}
+.step-block{}
+.step-marker{
+  width:13px;height:13px;border-radius:50%;
+  border:1.5px solid var(--o);background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.75rem;position:relative;z-index:2;
+  box-shadow:0 0 0 4px var(--bg);
+}
+.step-marker::after{content:'';width:5px;height:5px;border-radius:50%;background:var(--o)}
+.step-num{font-size:.62rem;font-weight:700;letter-spacing:.1em;color:var(--o);margin-bottom:.55rem}
+.step-block h3{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:300;color:var(--ink);margin-bottom:.55rem;letter-spacing:-.01em}
+.step-block p{font-size:.8rem;color:var(--muted);line-height:1.7;font-weight:300}
+
+/* ══════════════════════════════════════════
+   CONTACT — mobile-optimised, Jony Ive precision
+══════════════════════════════════════════ */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,5vw,6rem);align-items:start}
+.contact-options{display:flex;flex-direction:column;gap:.75rem;margin-top:1.75rem}
+.contact-option{
+  display:flex;align-items:center;gap:1rem;
+  padding:1rem 1.25rem;border-radius:var(--r-md);
+  border:1px solid var(--border);background:var(--white);
+  transition:border-color .2s,transform .2s var(--ease);
+  color:var(--ink);
+}
+.contact-option:hover{border-color:var(--o);transform:translateX(2px)}
+.contact-option:active{transform:translateX(0)}
+.co-icon{
+  width:40px;height:40px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.co-icon svg{width:18px;height:18px}
+.ci-wa{background:#dcfce7}.ci-mail{background:#dbeafe}.ci-ph{background:#fce7f3}
+.co-text strong{display:block;font-size:.85rem;font-weight:500;color:var(--ink)}
+.co-text span{font-size:.75rem;color:var(--muted);font-weight:300}
+.cal-ghost{
+  border:1.5px dashed var(--border);border-radius:var(--r-md);
+  min-height:150px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:.65rem;
+  padding:2rem;text-align:center;margin-top:1.25rem;
+}
+.cal-ghost p{font-size:.78rem;color:var(--muted);line-height:1.6;font-weight:300}
+
+.contact-form{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r-xl);padding:2rem;
+}
+.contact-form h3{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:300;margin-bottom:1.5rem;letter-spacing:-.01em}
+.cf-2{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.75rem}
+.cf-f{margin-bottom:.75rem}
+.cf-f label{display:block;font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.28rem}
+.cf-f input,.cf-f textarea,.cf-f select{
+  width:100%;background:var(--white);border:1.5px solid var(--border);
+  border-radius:10px;padding:.78rem .95rem;font-size:.875rem;color:var(--ink);
+  font-family:'Figtree',sans-serif;outline:none;transition:border-color .2s;
+  min-height:46px;appearance:none;
+}
+.cf-f input:focus,.cf-f textarea:focus,.cf-f select:focus{border-color:var(--o)}
+.cf-f textarea{min-height:100px;resize:vertical}
+.cf-f select{cursor:pointer}
+
+/* CTA BAND */
+.cta-band{background:var(--o);padding:clamp(4rem,8vw,7rem) 0;text-align:center}
+.cta-band h2{color:#fff;margin-bottom:.9rem}
+.cta-band p{color:rgba(255,255,255,.65);font-size:clamp(.9rem,2vw,1.05rem);line-height:1.75;max-width:520px;margin:0 auto 2.25rem;font-weight:300}
+.cta-pair{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
+
+/* ══════════════════════════════════════════
+   DIGITAL PRODUCTS — bento grid at bottom
+══════════════════════════════════════════ */
+.bento{
+  display:grid;
+  gap:1.25rem;
+  grid-template-columns:1fr 1fr 1fr;
+  grid-template-rows:auto auto;
+  grid-template-areas:
+    "p1 p1 p2"
+    "p1 p1 p3";
+}
+.bento-card{
+  background:var(--white);border:1px solid var(--border);border-radius:var(--r-xl);
+  overflow:hidden;transition:transform .26s var(--ease),box-shadow .26s var(--ease);
+  display:flex;flex-direction:column;
+}
+.bento-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.bc-1{grid-area:p1;flex-direction:row;align-items:stretch}
+.bc-2{grid-area:p2}
+.bc-3{grid-area:p3}
+
+.bc-cover{
+  position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;padding:1.25rem;
+}
+.bc-1 .bc-cover{width:45%;flex-shrink:0;min-height:260px}
+.bc-2 .bc-cover,.bc-3 .bc-cover{aspect-ratio:16/9}
+.bc-cover-text{font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;color:#fff;line-height:1.25;position:relative;z-index:2}
+.bc-pill{
+  position:absolute;top:.85rem;left:.85rem;z-index:3;
+  background:rgba(255,255,255,.95);color:var(--o);
+  font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:.22rem .65rem;border-radius:980px;
+}
+
+.bc-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+.bc-type{font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--o);margin-bottom:.5rem}
+.bc-body h3{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:300;color:var(--ink);line-height:1.3;letter-spacing:-.01em;margin-bottom:.5rem}
+.bc-body p{font-size:.78rem;color:var(--muted);line-height:1.65;flex:1;margin-bottom:1rem;font-weight:300}
+.bc-foot{display:flex;align-items:center;justify-content:space-between;padding-top:.9rem;border-top:1px solid var(--border);margin-top:auto}
+.bc-price{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:300;color:var(--ink)}
+.bc-price s{font-family:'Figtree',sans-serif;font-size:.78rem;color:var(--border);margin-right:.2rem}
+.bc-cta{font-size:.72rem;font-weight:600;color:var(--o);display:flex;align-items:center;gap:.3rem;transition:gap .18s var(--ease)}
+.bento-card:hover .bc-cta{gap:.55rem}
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+footer{background:var(--black);padding:3.5rem 0 2rem;color:rgba(255,255,255,.38)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:1.5rem}
+.fb img{filter:invert(1) brightness(1.8);opacity:.55;height:24px;margin-bottom:1rem}
+.fb p{font-size:.8rem;line-height:1.7;font-weight:300;max-width:220px}
+.fc h4{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:1rem}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.fc li a{font-size:.8rem;color:rgba(255,255,255,.35);transition:color .2s;font-weight:300}
+.fc li a:hover{color:#fff}
+.footer-btm{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem}
+.footer-btm p{font-size:.68rem;color:rgba(255,255,255,.18)}
+.footer-soc{display:flex;gap:1.5rem}
+.footer-soc a{font-size:.65rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.22);transition:color .2s}
+.footer-soc a:hover{color:#fff}
+
+/* WA float */
+.wa-fab{
+  position:fixed;bottom:calc(1.25rem + env(safe-area-inset-bottom));right:1.25rem;z-index:700;
+  width:50px;height:50px;border-radius:50%;background:#25d366;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,.4);
+  transition:transform .22s var(--ease),box-shadow .22s var(--ease);
+}
+.wa-fab:hover{transform:scale(1.08);box-shadow:0 8px 28px rgba(37,211,102,.5)}
+.wa-fab svg{width:26px;height:26px;fill:#fff}
+@media(max-width:767px){
+  /* push WA fab up above sticky CTA on mobile */
+  .wa-fab{bottom:calc(4.5rem + env(safe-area-inset-bottom));right:1.25rem}
+}
+
+/* ══════════════════════════════════════════
+   REVEAL ANIMATION
+══════════════════════════════════════════ */
+.r{opacity:0;transform:translateY(16px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.r.in{opacity:1;transform:none}
+.r[data-d="1"]{transition-delay:.08s}
+.r[data-d="2"]{transition-delay:.16s}
+.r[data-d="3"]{transition-delay:.24s}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — mobile is PRIMARY
+══════════════════════════════════════════ */
+@media(max-width:860px){
+  .nav-links,.nav-book-btn{display:none}
+  .ham{display:flex}
+
+  .problem-grid,.about-grid,.contact-grid,.magnet-wrap,.ai-intro{
+    grid-template-columns:1fr;gap:2.5rem;
+  }
+  .ai-cards{grid-template-columns:1fr}
+  .process-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .process-grid::before{display:none}
+
+  /* bento collapses to single column on mobile */
+  .bento{grid-template-columns:1fr;grid-template-areas:"p1""p2""p3"}
+  .bc-1{flex-direction:column}
+  .bc-1 .bc-cover{width:100%;min-height:auto;aspect-ratio:16/9}
+
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .about-photo-wrap,.photo-sticky{position:static}
+  .photo-frame{aspect-ratio:16/9;max-height:300px}
+  .v-desc{display:none}
+  .svc-panel-inner{grid-template-columns:1fr}
+}
+
+@media(max-width:540px){
+  .process-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .hero-stats{flex-direction:column;gap:1.25rem}
+  .hero-ctas{flex-direction:column}
+  .hero-ctas .btn{width:100%}
+  .cta-pair{flex-direction:column;align-items:center}
+  .cta-pair .btn{width:100%;max-width:320px}
+  .cf-2{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
 
-    <header id="s-header" class="s-header">
-        <div class="container s-header__inner">
-            <a href="#" class="s-header__logo">
-                 <img src="ymk-digital-logo-accent-720x120.png" alt="YMK Digital">
-            </a>
-            
-            <p class="s-header__text">Attention: SMBs & Startups – don’t burn your fingers on low-quality leads.</p>
-            <a href="#s-calendar" class="s-header__cta">Book Free Call</a>
-        </div>
-    </header>
+<!-- ════════════════════════
+     STICKY MOBILE CTA
+════════════════════════ -->
+<a href="#contact" class="sticky-cta" id="sticky-cta">
+  Book a Free Strategy Call
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</a>
 
-    <main>
-        <section id="s-hero" class="s-hero s-module">
-            <div class="container">
-                <h1 class="s-hero__title">I help you <span id="typewriter-text" class="s-hero__typewriter-text"></span><span class="s-hero__cursor"></span></h1>
-                <p class="s-hero__subtitle">Install scalable funnels that generate consistent, measurable growth.</p>
-                <a href="#s-calendar" class="s-cta__button s-hero__cta">Book Your Free Strategy Call</a>
-            </div>
-        </section>
-
-        <section id="s-how" class="s-how s-module">
-            <div class="container">
-                <h2>How I Make It Happen</h2>
-                <div class="s-how__grid">
-                    <div class="s-how__card">
-                        <div class="s-how__index">01</div>
-                        <h3 class="s-how__title">Strategy First</h3>
-                        <p class="s-how__copy">We define your brand, audience, and a clear path to your goals before any creative work begins.</p>
-                    </div>
-
-                    <div class="s-how__card">
-                        <div class="s-how__index">02</div>
-                        <h3 class="s-how__title">System Buildout</h3>
-                        <p class="s-how__copy">I construct your digital presence—from your website to your lead funnels—engineered for conversion.</p>
-                    </div>
-
-                    <div class="s-how__card">
-                        <div class="s-how__index">03</div>
-                        <h3 class="s-how__title">Growth Engine</h3>
-                        <p class="s-how__copy">We launch and manage content systems that build authority and attract a consistent flow of leads.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="s-expect" class="s-expect s-module">
-            <div class="container s-expect__inner">
-                <div class="s-expect__left">
-                    <h2 class="s-expect__title">What You Can Expect</h2>
-                    <p class="s-expect__subtitle">A complete system, not just a set of services. Here’s what you get.</p>
-                </div>
-                <div class="s-expect__right">
-                    <div class="s-expect__tabs">
-                        <input type="radio" name="tabs" id="tab1" checked="checked">
-                        <label for="tab1">Website</label>
-                        <div class="s-expect__panel">
-                            <h4>A Website That Converts</h4>
-                            <p>Your online home, engineered not just for looks, but to turn visitors into paying clients.</p>
-                        </div>
-
-                        <input type="radio" name="tabs" id="tab2">
-                        <label for="tab2">Social</label>
-                        <div class="s-expect__panel">
-                            <h4>An Authoritative Social Presence</h4>
-                            <p>Optimized social channels that serve as hubs of authority and reliable lead magnets.</p>
-                        </div>
-
-                        <input type="radio" name="tabs" id="tab3">
-                        <label for="tab3">Content</label>
-                        <div class="s-expect__panel">
-                            <h4>A Compelling Content Engine</h4>
-                            <p>Narrative-driven assets that resonate with your audience and position you as the only solution.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="s-cta" class="s-cta s-module">
-            <div class="container">
-                <h2 class="s-cta__title">Book Your Free Strategy Call</h2>
-                <a href="#s-calendar" class="s-cta__button">Schedule Now</a>
-            </div>
-        </section>
-
-        <section id="s-calendar" class="s-calendar s-module">
-            <div class="container" style="padding: 20px; background-color: #f9f9f9; text-align: center;">
-                <h2 class="s-calendar__title">Schedule a Call</h2>
-                <iframe width="100%" height="750px" src="https://ymkdigital.zohobookings.in/portal-embed#/ymkdigital" frameborder="0" allowfullscreen style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"></iframe>
-            </div>
-        </section>
-        
-        <section id="s-who" class="s-who s-module">
-            <div class="container">
-                <h2 class="s-who__title">Who Can Connect</h2>
-                <div class="s-who__grid">
-                    <a href="#s-calendar" class="s-who__card-link">
-                        <div class="s-who__card">
-                            <div class="s-who__icon">🩺</div>
-                            <h4>Doctors & Clinicians</h4>
-                        </div>
-                    </a>
-                    <a href="#s-calendar" class="s-who__card-link">
-                        <div class="s-who__card">
-                            <div class="s-who__icon">🍽️</div>
-                            <h4>Restaurateurs</h4>
-                        </div>
-                    </a>
-                    <a href="#s-calendar" class="s-who__card-link">
-                        <div class="s-who__card">
-                            <div class="s-who__icon">🛍️</div>
-                            <h4>Boutique Owners</h4>
-                        </div>
-                    </a>
-                    <a href="#s-calendar" class="s-who__card-link">
-                        <div class="s-who__card">
-                            <div class="s-who__icon">🎨</div>
-                            <h4>Creators & Coaches</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section id="s-about" class="s-about s-module">
-            <div class="container s-about__inner">
-                <div class="s-about__photo">
-                    <img src="https://via.placeholder.com/400x400" alt="Profile picture of the consultant">
-                </div>
-                <div class="s-about__bio">
-                    <h2 class="s-about__title">About Me</h2>
-                    <p>I’m a brand strategist and full-stack developer who helps businesses stop guessing and start growing. With over a decade of experience, I've generated millions in revenue for clients by building digital systems that actually work.</p>
-                    <p>My approach is simple: strategy before tactics. I build brands that last and funnels that convert.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="s-blog" class="s-blog s-module">
-            <div class="container">
-                <h2 class="s-blog__title">Read My Latest Insights</h2>
-                <div class="s-blog__grid">
-                    <a href="blog01.html" class="s-blog__card">
-                        <div class="s-blog__card-image" style="background-image: url('image_241582.png'); background-size: cover; background-position: center;"></div>
-                        <div class="s-blog__card-content">
-                            <h3>Why Emotional Storytelling Beats Hard Selling</h3>
-                            <p>Consumers don't want to be sold to. They want to be moved. Learn why stories are the future of advertising.</p>
-                        </div>
-                    </a>
-                    
-                    <a href="blog02.html" class="s-blog__card">
-                        <div class="s-blog__card-image"></div>
-                        <div class="s-blog__card-content">
-                            <h3>The Only 3 Content Pillars You'll Ever Need</h3>
-                            <p>Simplify your content strategy and build authority by focusing on these core areas.</p>
-                        </div>
-                    </a>
-                    
-                    <a href="blog03.html" class="s-blog__card">
-                        <div class="s-blog__card-image"></div>
-                        <div class="s-blog__card-content">
-                            <h3>"Trash Leads" Are Costing You Money. Here's How to Fix It.</h3>
-                            <p>Qualify your audience and build a funnel that delivers clients, not just clicks.</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <a href="https://wa.me/+91 83682 89737" class="whatsapp-float" target="_blank">
-        💬
+<!-- ════════════════════════
+     NAV
+════════════════════════ -->
+<nav id="nav" class="on-hero">
+  <div class="wrap-lg nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="ymk-digital-logo-accent-720x120.png" alt="YMK Digital" id="logo" class="invert">
     </a>
+    <ul class="nav-links on-dark" id="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#ai-news">AI for SMBs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#contact" class="btn btn-primary nav-book-btn" style="padding:.65rem 1.4rem;font-size:.78rem">Book a Call</a>
+      <button class="ham light" id="ham" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
 
-    <script>
-        // --- 2. Landing Hero: Typewriter Effect ---
-        const sTypewriter = {
-            init: function() {
-                const target = document.getElementById("typewriter-text");
-                if (!target) return;
+<!-- mobile overlay -->
+<div class="mob-overlay" id="mob">
+  <a href="#services" onclick="cm()">Services</a>
+  <div class="mob-rule"></div>
+  <a href="#about"    onclick="cm()">About</a>
+  <a href="#ai-news"  onclick="cm()">AI for SMBs</a>
+  <a href="#contact"  onclick="cm()">Contact</a>
+  <div class="mob-rule"></div>
+  <a href="#contact"  onclick="cm()" class="cta-link">Book a Free Call →</a>
+</div>
 
-                // --- SHORTENED PHRASES TO FIT ONE LINE ---
-                const phrases = ["build your brand.", "get quality leads.", "drive real growth."];
-                
-                let phraseIndex = 0;
-                let charIndex = 0;
-                let isDeleting = false;
-                
-                function type() {
-                    const currentPhrase = phrases[phraseIndex];
-                    let text = '';
-                    if (isDeleting) {
-                        text = currentPhrase.substring(0, charIndex - 1);
-                        charIndex--;
-                    } else {
-                        text = currentPhrase.substring(0, charIndex + 1);
-                        charIndex++;
-                    }
-                    target.textContent = text;
-                    const typeSpeed = isDeleting ? 75 : 150;
+<!-- ════════════════════════
+     HERO
+════════════════════════ -->
+<section id="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-gradient"></div>
+  <div class="wrap hero-content">
 
-                    if (!isDeleting && charIndex === currentPhrase.length) {
-                        setTimeout(() => isDeleting = true, 2000);
-                    } else if (isDeleting && charIndex === 0) {
-                        isDeleting = false;
-                        phraseIndex = (phraseIndex + 1) % phrases.length;
-                    }
-                    setTimeout(type, typeSpeed);
-                }
-                type();
-            }
-        };
-        sTypewriter.init();
+    <div class="hero-kicker r">
+      <span class="hero-kicker-dot"></span>
+      <span>Yashasvi Meenu Kashyap &nbsp;·&nbsp; Brand Strategist &amp; Creative Consultant</span>
+    </div>
 
-        // --- 5. Dynamic Suggestions: Fade-in on Scroll ---
-        const sFadeIn = {
-            init: function() {
-                const sections = document.querySelectorAll('.s-how__step, .s-who__card, .s-blog__card, .s-about__inner');
-                const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-                if (motionQuery.matches) {
-                    sections.forEach(sec => sec.classList.add('is-visible'));
-                    return;
-                }
+    <h1 class="hero-h1 r">
+      Your brand has<br>
+      a <em>story</em> problem.<br>
+      Let's solve it.
+    </h1>
 
-                sections.forEach(sec => sec.classList.add('fade-in-section'));
-                const observerOptions = {
-                    root: null,
-                    rootMargin: '0px',
-                    threshold: 0.1 
-                };
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('is-visible');
-                            observer.unobserve(entry.target); 
-                        }
-                    });
-                }, observerOptions);
-                sections.forEach(sec => observer.observe(sec));
-            }
-        };
-        sFadeIn.init();
-    </script>
+    <p class="hero-sub r">
+      15+ years. 9 ad agencies. Samsung, Honda, Pepsi, Gujarat Tourism.
+      I help ambitious SMBs build brands that convert —
+      strategy-first, story-always, results that compound.
+    </p>
 
+    <div class="hero-ctas r">
+      <a href="#contact" class="btn btn-primary">
+        Book a Free Strategy Call
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#services" class="btn btn-ghost-white">See Services</a>
+    </div>
+
+    <div class="hero-rule r"></div>
+
+    <div class="hero-stats r">
+      <div class="stat">
+        <div class="stat-n">15<sup>+</sup></div>
+        <div class="stat-l">Years in the field</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">9<sup>+</sup></div>
+        <div class="stat-l">Ad agencies</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">10<sup>+</sup></div>
+        <div class="stat-l">Major campaigns</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">3</div>
+        <div class="stat-l">Ventures built</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ticker -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ti"><span class="ti-dot"></span>Samsung</span>
+    <span class="ti"><span class="ti-dot"></span>Honda Cars</span>
+    <span class="ti"><span class="ti-dot"></span>Pepsi</span>
+    <span class="ti"><span class="ti-dot"></span>Amway</span>
+    <span class="ti"><span class="ti-dot"></span>Gujarat Tourism</span>
+    <span class="ti"><span class="ti-dot"></span>Homecenter</span>
+    <span class="ti"><span class="ti-dot"></span>Adfactors</span>
+    <span class="ti"><span class="ti-dot"></span>Rediffusion Y&amp;R</span>
+    <span class="ti"><span class="ti-dot"></span>Cheil Worldwide</span>
+    <span class="ti"><span class="ti-dot"></span>JWT &amp; Mudra</span>
+    <!-- dupe -->
+    <span class="ti"><span class="ti-dot"></span>Samsung</span>
+    <span class="ti"><span class="ti-dot"></span>Honda Cars</span>
+    <span class="ti"><span class="ti-dot"></span>Pepsi</span>
+    <span class="ti"><span class="ti-dot"></span>Amway</span>
+    <span class="ti"><span class="ti-dot"></span>Gujarat Tourism</span>
+    <span class="ti"><span class="ti-dot"></span>Homecenter</span>
+    <span class="ti"><span class="ti-dot"></span>Adfactors</span>
+    <span class="ti"><span class="ti-dot"></span>Rediffusion Y&amp;R</span>
+    <span class="ti"><span class="ti-dot"></span>Cheil Worldwide</span>
+    <span class="ti"><span class="ti-dot"></span>JWT &amp; Mudra</span>
+  </div>
+</div>
+
+<!-- ════════════════════════
+     PROBLEM
+════════════════════════ -->
+<section class="sec sec-white">
+  <div class="wrap">
+    <div class="problem-grid">
+      <div class="r">
+        <span class="eyebrow">Why businesses come to me</span>
+        <h2 class="display d-lg" style="margin:.75rem 0 1.5rem;color:var(--ink)">
+          You're not invisible because you're bad at what you do.
+        </h2>
+        <blockquote class="problem-pull-quote r">
+          "You're invisible because no one has told your story in a way that makes the right people stop."
+        </blockquote>
+        <p class="body-lg r">Most SMBs invest in execution long before nailing the message. Strategy comes last — which means every rupee before it is wasted on noise. My job is to reverse that sequence.</p>
+        <div style="margin-top:2rem" class="r">
+          <a href="#contact" class="btn btn-dark">
+            Let's Talk About Your Business
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="r" data-d="1">
+        <span class="eyebrow" style="display:block;margin-bottom:.5rem">Does this sound familiar?</span>
+        <ul class="pain-list">
+          <li class="pain-item">
+            <span class="pain-idx">01</span>
+            <span class="pain-text">Ads are running but the leads are wrong — unqualified, low-intent, expensive to convert.</span>
+          </li>
+          <li class="pain-item">
+            <span class="pain-idx">02</span>
+            <span class="pain-text">Content is going out consistently, but building nothing — no authority, no compounding trust.</span>
+          </li>
+          <li class="pain-item">
+            <span class="pain-idx">03</span>
+            <span class="pain-text">Your website exists but doesn't explain why someone should choose you over anyone else.</span>
+          </li>
+          <li class="pain-item">
+            <span class="pain-idx">04</span>
+            <span class="pain-text">You know your product is excellent. You just can't say it in a way that buyers actually feel.</span>
+          </li>
+          <li class="pain-item">
+            <span class="pain-idx">05</span>
+            <span class="pain-text">Every competitor looks and sounds exactly like you. No visible reason for anyone to choose.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+     SERVICES / RATE CARD
+════════════════════════ -->
+<section class="sec sec-surface" id="services">
+  <div class="wrap">
+    <div class="r" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;margin-bottom:2.5rem">
+      <div>
+        <span class="eyebrow">Services</span>
+        <h2 class="display d-lg" style="margin:.75rem 0 0;color:var(--ink)">Three ways<br>to work together.</h2>
+      </div>
+      <p class="body-sm" style="max-width:280px">Tap any service to see what's included. Choose based on where you are right now.</p>
+    </div>
+
+    <div class="svc-accordion r">
+
+      <!-- Row 01 -->
+      <div class="svc-row" onclick="toggleRow(this)">
+        <div>
+          <span class="svc-badge badge-def">Brand Sprint · 2 Weeks</span>
+          <div class="svc-title">The Story Fix</div>
+          <div class="svc-sub">Clarity fast — brand voice, positioning, and copy that works.</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1rem">
+          <div class="svc-price">₹18,000<small>one-time</small></div>
+          <svg class="svc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="svc-panel">
+        <div class="svc-panel-inner">
+          <ul class="svc-items">
+            <li>Brand Voice &amp; Tone Guide</li>
+            <li>Positioning Statement (3-sentence)</li>
+            <li>Homepage Copy Rewrite</li>
+            <li>3 Core Message Frameworks</li>
+          </ul>
+          <div>
+            <ul class="svc-items" style="margin-bottom:1.25rem">
+              <li>2 Strategy Sessions (60 min each)</li>
+              <li>Audience Persona Definition</li>
+              <li>Competitive Differentiation Map</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary" style="font-size:.78rem;padding:.75rem 1.4rem">Enquire →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 02 FEATURED -->
+      <div class="svc-row featured-row" onclick="toggleRow(this)">
+        <div>
+          <span class="svc-badge badge-hot">Most Popular · Retainer</span>
+          <div class="svc-title">The Content Engine</div>
+          <div class="svc-sub">Authority that compounds. Leads that arrive pre-qualified.</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1rem">
+          <div class="svc-price">₹35,000<small>per month</small></div>
+          <svg class="svc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="svc-panel">
+        <div class="svc-panel-inner">
+          <ul class="svc-items">
+            <li>Monthly Content Strategy &amp; Brief</li>
+            <li>8 Short-form Social Posts</li>
+            <li>2 Long-form Articles / Blogs</li>
+            <li>Bi-weekly Email Newsletter</li>
+          </ul>
+          <div>
+            <ul class="svc-items" style="margin-bottom:1.25rem">
+              <li>Monthly Performance Review</li>
+              <li>Funnel Refinement Recommendations</li>
+              <li>Ongoing Brand Voice Consistency</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary" style="font-size:.78rem;padding:.75rem 1.4rem">Enquire →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 03 -->
+      <div class="svc-row" style="border-bottom:none" onclick="toggleRow(this)">
+        <div>
+          <span class="svc-badge badge-new">Full System · Project</span>
+          <div class="svc-title">The Growth Build</div>
+          <div class="svc-sub">Strategy, brand, website, funnels — built from scratch for real growth.</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1rem">
+          <div class="svc-price">₹85,000<small>per project</small></div>
+          <svg class="svc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="svc-panel" style="border-bottom:none">
+        <div class="svc-panel-inner">
+          <ul class="svc-items">
+            <li>Full Brand Strategy &amp; Voice Guide</li>
+            <li>Website Copy &amp; Creative Direction</li>
+            <li>Lead Funnel Architecture</li>
+            <li>3-Month Content Roadmap</li>
+          </ul>
+          <div>
+            <ul class="svc-items" style="margin-bottom:1.25rem">
+              <li>SEO Content Foundation</li>
+              <li>5-Part Email Welcome Sequence</li>
+              <li>Optional Monthly Retainer Follow-on</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary" style="font-size:.78rem;padding:.75rem 1.4rem">Enquire →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+     ABOUT
+════════════════════════ -->
+<section class="sec sec-white" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+
+      <div class="photo-sticky r">
+        <div class="photo-frame">
+          <!-- REPLACE: swap with <img src="your-photo.jpg" alt="Yashasvi Meenu Kashyap"> -->
+          <div class="photo-ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <p>Your photo here</p>
+          </div>
+          <div class="photo-overlay">
+            <strong>Yashasvi Meenu Kashyap</strong>
+            <span>Creative Director &amp; Brand Strategist</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-text">
+        <span class="eyebrow r">About</span>
+        <h2 class="display d-lg r" style="margin:.75rem 0 1.5rem;color:var(--ink)">
+          I'm a strategist<br>who <em style="font-style:italic;color:var(--o)">writes.</em><br>That's rare.
+        </h2>
+        <p class="r">Most consultants build funnels and run strategy workshops. Most copywriters craft decent words. Very few operate at the intersection — where strategic rigour meets creative craft. That's the space where businesses actually change.</p>
+        <p class="r">Over <strong>15 years across 9 leading agencies</strong> — Adfactors, Rediffusion Y&amp;R, Cheil Worldwide, JWT and Mudra — I've built brand concepts, led integrated campaigns, and created content systems for Samsung, Honda Cars, Pepsi, Amway, and Gujarat Tourism.</p>
+        <p class="r">I now bring that same rigour to the businesses that need it most: <strong>growing SMBs, founders, and ambitious creators</strong> who want to build something that actually lasts.</p>
+
+        <span class="eyebrow r" style="display:block;margin:1.5rem 0 .75rem">Agencies</span>
+        <div class="agency-chips r">
+          <span class="agency-chip">Adfactors</span>
+          <span class="agency-chip">Rediffusion Y&amp;R</span>
+          <span class="agency-chip">Cheil Worldwide</span>
+          <span class="agency-chip">JWT</span>
+          <span class="agency-chip">Mudra</span>
+          <span class="agency-chip">+ 4 others</span>
+        </div>
+
+        <span class="eyebrow r" style="display:block;margin:1.5rem 0 .75rem">Capabilities</span>
+        <div class="chip-row r">
+          <span class="chip">Brand Strategy</span>
+          <span class="chip">Creative Direction</span>
+          <span class="chip">Conversion Copy</span>
+          <span class="chip">Content Systems</span>
+          <span class="chip">Lead Funnels</span>
+          <span class="chip">SEO-Led Content</span>
+          <span class="chip">Campaign Concepting</span>
+          <span class="chip">AI-Augmented Creativity</span>
+        </div>
+
+        <span class="eyebrow r" style="display:block;margin:1.5rem 0 .75rem">Ventures Co-Founded</span>
+        <div class="ventures">
+          <div class="venture-row r"><div class="v-dot"></div><span class="v-name">OneFarm</span><span class="v-desc">Agri-tech: farm-to-consumer</span></div>
+          <div class="venture-row r" data-d="1"><div class="v-dot"></div><span class="v-name">Hastagatha</span><span class="v-desc">Digital storytelling studio</span></div>
+          <div class="venture-row r" data-d="2"><div class="v-dot"></div><span class="v-name">Converse Convert</span><span class="v-desc">Conversion-focused consultancy</span></div>
+        </div>
+
+        <a href="#contact" class="btn btn-primary r" style="margin-top:2rem">
+          Work With Me
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+     PROCESS
+════════════════════════ -->
+<section class="sec sec-surface">
+  <div class="wrap">
+    <div class="r" style="max-width:520px">
+      <span class="eyebrow">Process</span>
+      <h2 class="display d-lg" style="margin:.75rem 0;color:var(--ink)">From invisible<br>to inevitable.</h2>
+    </div>
+    <div class="process-grid">
+      <div class="step-block r">
+        <div class="step-marker"></div>
+        <div class="step-num">01</div>
+        <h3>Listen &amp; Diagnose</h3>
+        <p>A deep-dive session before a single opinion is formed. No templates, no assumptions, no advice recycled from last week's client.</p>
+      </div>
+      <div class="step-block r" data-d="1">
+        <div class="step-marker"></div>
+        <div class="step-num">02</div>
+        <h3>Build the Strategy</h3>
+        <p>Positioning, voice, audience architecture. The foundation is built before any creative begins — strategy is what makes creativity effective.</p>
+      </div>
+      <div class="step-block r" data-d="2">
+        <div class="step-marker"></div>
+        <div class="step-num">03</div>
+        <h3>Create &amp; Execute</h3>
+        <p>Copy, content, funnels, creative direction — all built against the strategy. Nothing produced without a clear reason.</p>
+      </div>
+      <div class="step-block r" data-d="3">
+        <div class="step-marker"></div>
+        <div class="step-num">04</div>
+        <h3>Measure &amp; Compound</h3>
+        <p>We launch, measure what matters, and refine. Great systems don't plateau — they compound. Each month builds on the last.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+     AI FOR SMBs  — live via Claude API
+════════════════════════ -->
+<section class="sec sec-white" id="ai-news">
+  <div class="wrap">
+    <div class="ai-intro r">
+      <div>
+        <span class="eyebrow">AI Intelligence for SMBs</span>
+        <h2 class="display d-lg" style="margin:.75rem 0;color:var(--ink)">AI that's actually<br>useful for your business.</h2>
+      </div>
+      <div>
+        <p class="body-lg">The AI landscape moves fast. Every week there are new tools that can cut your marketing costs, speed up content creation, or help you understand your customers better. Here's what matters right now.</p>
+        <div class="ai-refresh r" onclick="loadAINews()" style="margin-top:1rem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/>
+            <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/>
+          </svg>
+          Refresh AI news
+        </div>
+      </div>
+    </div>
+    <div class="ai-cards" id="ai-cards">
+      <!-- skeleton loaders -->
+      <div class="ai-card loading"><div class="ai-tag">·</div><div class="ai-title">·</div><div class="ai-body">·</div><div class="ai-impact">·</div></div>
+      <div class="ai-card loading"><div class="ai-tag">·</div><div class="ai-title">·</div><div class="ai-body">·</div><div class="ai-impact">·</div></div>
+      <div class="ai-card loading"><div class="ai-tag">·</div><div class="ai-title">·</div><div class="ai-body">·</div><div class="ai-impact">·</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+     LEAD MAGNET
+════════════════════════ -->
+<section class="sec sec-surface" id="magnet">
+  <div class="wrap">
+    <div class="magnet-wrap r">
+      <div class="magnet-left">
+        <span class="eyebrow" style="color:rgba(212,87,10,.7)">Free Resource</span>
+        <h2 class="display d-lg" style="color:#fff;margin:.75rem 0 .9rem">The Brand Brief I give every new client.</h2>
+        <p>Before I write a single word for any client, they complete this 3-page exercise. It surfaces the clarity most businesses have been missing for years. Yours, free.</p>
+        <ul class="magnet-points" style="margin-top:1.25rem">
+          <li>Define your brand's real positioning in 3 clear sentences</li>
+          <li>Identify the audience that will actually pay you</li>
+          <li>Find the emotional angle your competitors have all missed</li>
+          <li>Build a message architecture that scales with your growth</li>
+        </ul>
+      </div>
+      <div class="magnet-form">
+        <div class="magnet-preview">
+          <p class="mp-eye">Free Download</p>
+          <h4>The 3-Page Brand Brief That Clears Everything Up</h4>
+        </div>
+        <div class="mf"><label>First Name</label><input type="text" id="mg-n" placeholder="Your first name"></div>
+        <div class="mf"><label>Email Address</label><input type="email" id="mg-e" placeholder="you@yourbusiness.com"></div>
+        <div class="mf"><label>Business Type</label><input type="text" id="mg-b" placeholder="e.g. Healthcare, F&amp;B, D2C…"></div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:.25rem" onclick="handleMagnet(this)">
+          Send Me the Brief
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <p class="mf-note">No spam. One email. Instant delivery. Unsubscribe any time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+     CTA BAND
+════════════════════════ -->
+<div class="cta-band">
+  <div class="wrap">
+    <h2 class="display d-lg" style="color:#fff">Ready to build a brand<br>people remember?</h2>
+    <p>The strategy call is free. 30 minutes, no pitch, no pressure. You'll leave with clarity on your biggest growth constraint — regardless of whether we work together.</p>
+    <div class="cta-pair">
+      <a href="https://wa.me/918368289737" target="_blank" class="btn btn-dark">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.509 5.837L.057 23.998l6.304-1.431A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.724.846.878-3.617-.234-.373A9.794 9.794 0 012.18 12C2.18 6.578 6.578 2.18 12 2.18S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+        Chat on WhatsApp
+      </a>
+      <a href="#contact" class="btn btn-ghost-white">Send a Message</a>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════
+     CONTACT
+════════════════════════ -->
+<section class="sec sec-white" id="contact">
+  <div class="wrap">
+    <div class="r" style="margin-bottom:3rem">
+      <span class="eyebrow">Get in Touch</span>
+      <h2 class="display d-lg" style="margin:.75rem 0;color:var(--ink)">Let's figure out<br>your story.</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="r">
+        <p class="body-lg" style="margin-bottom:1.75rem">The strategy call is free. 30 minutes, no pitch. You leave knowing exactly what your biggest growth bottleneck is and how to fix it.</p>
+        <div class="contact-options">
+          <a href="https://wa.me/918368289737" target="_blank" class="contact-option">
+            <div class="co-icon ci-wa"><svg viewBox="0 0 24 24" fill="#16a34a"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.509 5.837L.057 23.998l6.304-1.431A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.724.846.878-3.617-.234-.373A9.794 9.794 0 012.18 12C2.18 6.578 6.578 2.18 12 2.18S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg></div>
+            <div class="co-text"><strong>WhatsApp — Fastest</strong><span>+91 83682 89737 · Usually replies within the hour</span></div>
+          </a>
+          <a href="mailto:hello@ymk.digital" class="contact-option">
+            <div class="co-icon ci-mail"><svg viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+            <div class="co-text"><strong>Email</strong><span>hello@ymk.digital</span></div>
+          </a>
+          <a href="tel:8368289737" class="contact-option">
+            <div class="co-icon ci-ph"><svg viewBox="0 0 24 24" fill="none" stroke="#be185d" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.8 19.79 19.79 0 012.18 2a2 2 0 012-.18l3 .01a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div class="co-text"><strong>Phone</strong><span>+91 83682 89737</span></div>
+          </a>
+        </div>
+        <!-- REPLACE: embed Calendly / Cal.com below -->
+        <div class="cal-ghost" style="margin-top:1.25rem">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--border)" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <p><strong style="color:var(--muted);display:block;margin-bottom:.2rem">Embed booking calendar here</strong>Replace with Calendly or Cal.com script</p>
+        </div>
+      </div>
+
+      <div class="r" data-d="1">
+        <div class="contact-form">
+          <h3 class="display" style="font-size:1.3rem;font-weight:300;margin-bottom:1.5rem;letter-spacing:-.01em">Send a message</h3>
+          <div class="cf-2">
+            <div class="cf-f"><label>Name</label><input type="text" id="cf-n" placeholder="Your name"></div>
+            <div class="cf-f"><label>Email</label><input type="email" id="cf-e" placeholder="you@email.com"></div>
+          </div>
+          <div class="cf-f">
+            <label>I'm interested in</label>
+            <select id="cf-s">
+              <option value="">Select a service…</option>
+              <option>The Story Fix (₹18,000 Sprint)</option>
+              <option>The Content Engine (₹35,000/mo)</option>
+              <option>The Growth Build (₹85,000 Project)</option>
+              <option>Digital Products</option>
+              <option>Quick question</option>
+            </select>
+          </div>
+          <div class="cf-f"><label>Phone (optional)</label><input type="tel" id="cf-p" placeholder="+91…"></div>
+          <div class="cf-f"><label>Tell me about your business</label><textarea id="cf-m" rows="4" placeholder="What are you trying to solve? The more specific, the better my response."></textarea></div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="handleContact(this)">
+            Send Message
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <p class="body-sm" style="text-align:center;margin-top:.75rem">I respond within 24 hours on business days.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+     DIGITAL PRODUCTS — bento grid
+════════════════════════ -->
+<section class="sec sec-surface">
+  <div class="wrap">
+    <div class="r" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;margin-bottom:2.5rem">
+      <div>
+        <span class="eyebrow">Digital Products</span>
+        <h2 class="display d-lg" style="margin:.75rem 0 0;color:var(--ink)">15 years of thinking.<br>Yours instantly.</h2>
+      </div>
+      <p class="body-sm" style="max-width:280px">Frameworks and playbooks from real campaigns, real clients, real results. All with a 7-day refund guarantee.</p>
+    </div>
+
+    <div class="bento r">
+
+      <!-- Product 1 — large -->
+      <div class="bento-card bc-1">
+        <div class="bc-cover" style="background:linear-gradient(145deg,#0c1445 0%,#1a2f7a 50%,#2a4bbd 100%)">
+          <p class="bc-cover-text">The Brand<br>Brief Framework</p>
+          <span class="bc-pill">Bestseller</span>
+        </div>
+        <div class="bc-body">
+          <span class="bc-type">PDF Guide · 28 Pages</span>
+          <h3>The 3-Page Brand Brief That Clears Everything Up</h3>
+          <p>The exact framework I use before writing a single word for any client. Forces the clarity that makes every other decision easier — positioning, voice, messaging, all of it.</p>
+          <div class="bc-foot">
+            <div class="bc-price"><s>₹999</s> ₹499</div>
+            <!-- REPLACE href with Gumroad / Instamojo / Razorpay URL -->
+            <a href="#" class="bc-cta">Buy Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="bento-card bc-2">
+        <div class="bc-cover" style="background:linear-gradient(145deg,#0a2010,#145228,#1a7a40)">
+          <p class="bc-cover-text">Content That<br>Converts</p>
+        </div>
+        <div class="bc-body">
+          <span class="bc-type">E-Book · 45 Pages</span>
+          <h3>The SMB Content Playbook</h3>
+          <p>A step-by-step system to build content that fills your pipeline instead of just your feed.</p>
+          <div class="bc-foot">
+            <div class="bc-price">₹799</div>
+            <a href="#" class="bc-cta">Buy →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="bento-card bc-3">
+        <div class="bc-cover" style="background:linear-gradient(145deg,#1c0805,#7a2010,#c23a12)">
+          <p class="bc-cover-text">Stop Attracting<br>Trash Leads</p>
+          <span class="bc-pill">New</span>
+        </div>
+        <div class="bc-body">
+          <span class="bc-type">Workbook · 35 Pages</span>
+          <h3>The Lead Funnel Blueprint</h3>
+          <p>Redesign your lead generation so buyers arrive pre-qualified — 80% sold before they speak to you.</p>
+          <div class="bc-foot">
+            <div class="bc-price">₹899</div>
+            <a href="#" class="bc-cta">Buy →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p class="r body-sm" style="text-align:center;margin-top:1.25rem">7-day money-back guarantee on all products. &nbsp;<a href="#" style="color:var(--o);font-weight:500">View all →</a></p>
+  </div>
+</section>
+
+<!-- ════════════════════════
+     FOOTER
+════════════════════════ -->
+<footer>
+  <div class="wrap-lg">
+    <div class="footer-grid">
+      <div class="fb">
+        <img src="ymk-digital-logo-accent-720x120.png" alt="YMK Digital">
+        <p>Strategy first. Story always.<br>Growth that compounds.<br>India-based, globally minded.</p>
+      </div>
+      <div class="fc">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">The Story Fix</a></li>
+          <li><a href="#services">The Content Engine</a></li>
+          <li><a href="#services">The Growth Build</a></li>
+          <li><a href="#contact">Book a Strategy Call</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#magnet">Free Brand Brief</a></li>
+          <li><a href="blog01.html">Emotional Storytelling</a></li>
+          <li><a href="blog02.html">Content Pillars</a></li>
+          <li><a href="blog03.html">Trash Leads</a></li>
+          <li><a href="blogindex.txt">All Articles →</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://wa.me/918368289737" target="_blank">WhatsApp</a></li>
+          <li><a href="mailto:hello@ymk.digital">hello@ymk.digital</a></li>
+          <li><a href="tel:8368289737">+91 83682 89737</a></li>
+          <li><a href="#ln" target="_blank">LinkedIn</a></li><!-- REPLACE #ln -->
+          <li><a href="#ig" target="_blank">Instagram</a></li><!-- REPLACE #ig -->
+        </ul>
+      </div>
+    </div>
+    <div class="footer-btm">
+      <p>© 2026 Yashasvi Meenu Kashyap · YMK Digital. All rights reserved.</p>
+      <div class="footer-soc">
+        <a href="#ln" target="_blank">LinkedIn</a>
+        <a href="#ig" target="_blank">Instagram</a>
+        <a href="https://wa.me/918368289737">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WA FAB -->
+<a href="https://wa.me/918368289737" target="_blank" class="wa-fab" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.509 5.837L.057 23.998l6.304-1.431A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.724.846.878-3.617-.234-.373A9.794 9.794 0 012.18 12C2.18 6.578 6.578 2.18 12 2.18S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+</a>
+
+<!-- ════════════════════════
+     SCRIPTS
+════════════════════════ -->
+<script>
+(function(){
+'use strict';
+
+/* ── NAV ── */
+const nav      = document.getElementById('nav');
+const logo     = document.getElementById('logo');
+const navLinks = document.getElementById('nav-links');
+const ham      = document.getElementById('ham');
+const mob      = document.getElementById('mob');
+const stickyCTA = document.getElementById('sticky-cta');
+let heroHeight = 0;
+
+function calcHero(){ heroHeight = document.getElementById('hero').offsetHeight }
+calcHero();
+window.addEventListener('resize', calcHero, {passive:true});
+
+function syncNav(){
+  const onHero = window.scrollY < heroHeight * .9;
+  if(onHero){
+    nav.classList.add('on-hero');
+    nav.classList.remove('frosted');
+    logo.classList.add('invert');
+    navLinks.classList.add('on-dark');
+    ham.classList.add('light');
+    ham.classList.remove('dark');
+  } else {
+    nav.classList.remove('on-hero');
+    nav.classList.add('frosted');
+    logo.classList.remove('invert');
+    navLinks.classList.remove('on-dark');
+    ham.classList.remove('light');
+    ham.classList.add('dark');
+  }
+  // sticky mobile CTA — show after hero
+  if(window.scrollY > heroHeight * .5){
+    stickyCTA.classList.add('visible');
+  } else {
+    stickyCTA.classList.remove('visible');
+  }
+}
+syncNav();
+window.addEventListener('scroll', syncNav, {passive:true});
+
+/* ── HAMBURGER ── */
+ham.addEventListener('click', ()=>{
+  ham.classList.toggle('open');
+  mob.classList.toggle('open');
+  document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
+});
+window.cm = ()=>{
+  ham.classList.remove('open');
+  mob.classList.remove('open');
+  document.body.style.overflow = '';
+};
+
+/* ── SMOOTH ANCHOR ── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id = a.getAttribute('href');
+    if(id.length <= 1) return;
+    const t = document.querySelector(id);
+    if(t){
+      e.preventDefault();
+      const y = t.getBoundingClientRect().top + window.scrollY - 62;
+      window.scrollTo({top: y, behavior:'smooth'});
+      cm();
+    }
+  });
+});
+
+/* ── SCROLL REVEAL ── */
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+}, {threshold:.08});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+
+/* ── SERVICE ACCORDION ── */
+window.toggleRow = function(row){
+  const panel = row.nextElementSibling;
+  if(!panel || !panel.classList.contains('svc-panel')) return;
+  const isOpen = panel.classList.contains('open');
+  document.querySelectorAll('.svc-panel.open').forEach(p=>{ p.classList.remove('open'); p.previousElementSibling.classList.remove('open'); });
+  if(!isOpen){ panel.classList.add('open'); row.classList.add('open'); }
+};
+
+/* ── LEAD MAGNET ── */
+window.handleMagnet = function(btn){
+  const n = document.getElementById('mg-n').value.trim();
+  const e = document.getElementById('mg-e').value.trim();
+  if(!n || !e){ toast('Please fill in your name and email.','warn'); return; }
+  // TODO: replace body with fetch to Mailchimp / ConvertKit / EmailOctopus
+  btn.textContent = '✓ Brief on its way!';
+  btn.style.background = '#16a34a';
+  btn.disabled = true;
+  toast('The Brand Brief is heading to your inbox.','ok');
+};
+
+/* ── CONTACT FORM ── */
+window.handleContact = function(btn){
+  const n = document.getElementById('cf-n').value.trim();
+  const e = document.getElementById('cf-e').value.trim();
+  const m = document.getElementById('cf-m').value.trim();
+  if(!n || !e || !m){ toast('Please fill in name, email and message.','warn'); return; }
+  // TODO: replace with fetch to FormSubmit.co / your backend
+  btn.textContent = '✓ Message Sent!';
+  btn.style.background = '#16a34a';
+  btn.disabled = true;
+  toast("Got it. I'll be in touch within 24 hours.",'ok');
+};
+
+/* ── TOAST ── */
+function toast(msg, type){
+  const el = document.createElement('div');
+  el.textContent = msg;
+  Object.assign(el.style,{
+    position:'fixed',bottom:'1.5rem',left:'50%',
+    transform:'translateX(-50%) translateY(6px)',
+    background: type==='ok' ? '#16a34a' : '#D4570A',
+    color:'#fff',padding:'.65rem 1.4rem',borderRadius:'980px',
+    fontSize:'.8rem',fontWeight:'500',
+    boxShadow:'0 4px 20px rgba(0,0,0,.18)',
+    zIndex:'9999',opacity:'0',
+    transition:'opacity .22s, transform .22s',
+    whiteSpace:'nowrap',letterSpacing:'.01em',
+    fontFamily:"'Figtree',sans-serif",
+  });
+  document.body.appendChild(el);
+  requestAnimationFrame(()=>{ el.style.opacity='1'; el.style.transform='translateX(-50%) translateY(0)'; });
+  setTimeout(()=>{ el.style.opacity='0'; setTimeout(()=>el.remove(),250); }, 3500);
+}
+
+/* ── AI NEWS — Claude API + web_search ── */
+async function loadAINews(){
+  const container = document.getElementById('ai-cards');
+
+  // reset to skeletons
+  container.innerHTML = [1,2,3].map(()=>`
+    <div class="ai-card loading">
+      <div class="ai-tag">·</div>
+      <div class="ai-title">·</div>
+      <div class="ai-body">·</div>
+      <div class="ai-impact">·</div>
+    </div>
+  `).join('');
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+        messages: [{
+          role: 'user',
+          content: `Search for the 3 most recent and practically useful AI tools or developments for small and medium businesses (SMBs) in India as of 2025-2026. Focus on tools for marketing, content, customer service, or growth. For each item return ONLY this exact JSON structure with no extra text, no markdown, no backticks: [{"tag":"Category","title":"Short title max 9 words","body":"What the tool or development is, 20-25 words max","impact":"How an SMB can use it right now, 15-18 words max"}]`
+        }]
+      })
+    });
+
+    const data = await response.json();
+    // extract text from all content blocks (may include tool_use blocks)
+    const fullText = (data.content || [])
+      .map(block => block.type === 'text' ? block.text : '')
+      .join('');
+
+    // parse the JSON array
+    const match = fullText.match(/\[[\s\S]*?\]/);
+    if(!match) throw new Error('No JSON array found');
+    const items = JSON.parse(match[0]);
+
+    container.innerHTML = items.map(item => `
+      <div class="ai-card">
+        <div class="ai-tag">${escHtml(item.tag)}</div>
+        <div class="ai-title">${escHtml(item.title)}</div>
+        <div class="ai-body">${escHtml(item.body)}</div>
+        <div class="ai-impact">${escHtml(item.impact)}</div>
+      </div>
+    `).join('');
+
+    // re-observe new cards for reveal
+    container.querySelectorAll('.ai-card').forEach(el=>{
+      el.style.opacity='0';
+      el.style.transform='translateY(16px)';
+      el.style.transition='opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1)';
+      setTimeout(()=>{ el.style.opacity='1'; el.style.transform='none'; }, 50);
+    });
+
+  } catch(err) {
+    console.error('AI news load error:', err);
+    container.innerHTML = `
+      <div class="ai-card" style="grid-column:1/-1;text-align:center;padding:2.5rem">
+        <div class="ai-body" style="color:var(--muted)">
+          Couldn't load AI news right now. <span onclick="loadAINews()" style="color:var(--o);cursor:pointer;font-weight:500">Try again →</span>
+        </div>
+      </div>
+    `;
+  }
+}
+
+function escHtml(str){
+  return String(str)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+// load on mount
+loadAINews();
+window.loadAINews = loadAINews;
+
+})();
+</script>
 </body>
 </html>
-
-
-
