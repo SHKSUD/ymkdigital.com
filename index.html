@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<!--
+  YMK DIGITAL v10 — Dogstudio-inspired
+  ══════════════════════════════════════
+  BEFORE GO-LIVE:
+  1. Photo    → #about · replace .photo-empty
+  2. Calendar → #contact · replace .cal-placeholder
+  3. Socials  → footer · replace #linkedin #instagram
+  4. og:image → replace /og-image.jpg
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0C0C0A">
+<title>Yashasvi Meenu Kashyap | Brand Strategist — YMK Digital</title>
+<meta name="description" content="Brand strategist with 15+ years across 9 ad agencies. Samsung, Honda Cars, Pepsi, Gujarat Tourism. Helping Indian SMBs build brands that convert.">
+<meta name="author" content="Yashasvi Meenu Kashyap">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://www.ymk.digital/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.ymk.digital/">
+<meta property="og:title" content="Yashasvi Meenu Kashyap | Brand Strategist — YMK Digital">
+<meta property="og:description" content="15+ years. 9 agencies. Samsung, Honda, Pepsi. Strategy-first, story-always.">
+<meta property="og:image" content="https://www.ymk.digital/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.ymk.digital/og-image.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Yashasvi Meenu Kashyap","jobTitle":"Brand Strategist","url":"https://www.ymk.digital/","email":"hello@ymk.digital","telephone":"+918368289737"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom);transition:background .4s,color .4s}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+::selection{background:var(--a);color:#fff}
+
+/* ── TOKENS ── */
+:root{
+  --night:   #0C0C0A;
+  --ink:     #0C0C0A;
+  --cream:   #F7F3EC;
+  --warm:    #EDE8DF;
+  --rule:    #D8D2C8;
+  --muted:   #8A8680;
+  --a:       #D4570A;
+  --a-bg:    rgba(212,87,10,.09);
+  --a-ring:  rgba(212,87,10,.25);
+  --ease:    cubic-bezier(.22,1,.36,1);
+  --ease2:   cubic-bezier(.16,1,.3,1);
+}
+body.dark{
+  --ink:   #F0EBE2;
+  --cream: #0C0C0A;
+  --warm:  #141412;
+  --rule:  #282520;
+  --muted: #7A7570;
+}
+body.dark .bg-cream{background:#0C0C0A}
+body.dark .bg-warm{background:#141412}
+body.dark .svc-shell{background:#141412;border-color:#282520}
+body.dark .svc-head{background:#141412}
+body.dark .svc-head:hover{background:#0C0C0A}
+body.dark .svc-panel{background:#0C0C0A}
+body.dark .con-form{background:#141412;border-color:#282520}
+body.dark .con-way{background:#141412;border-color:#282520}
+body.dark .cf input,.dark .cf textarea,.dark .cf select{background:#0C0C0A;border-color:#282520;color:#F0EBE2}
+body.dark .res-block{background:#141412}
+body.dark .results-strip{background:#282520;border-color:#282520}
+body.dark .writing-list{background:#141412;border-color:#282520}
+body.dark .art-row{color:#F0EBE2}
+body.dark .art-row:hover{background:#0C0C0A}
+body.dark .chip{background:#141412;border-color:#282520}
+body.dark .vent{background:#141412;border-color:#282520}
+body.dark .photo-frame{background:#141412;border-color:#282520}
+body.dark .step-pip{background:#0C0C0A;box-shadow:0 0 0 4px #0C0C0A}
+body.dark .cal-placeholder{border-color:#282520}
+body.dark #nav.solid{background:rgba(12,12,10,.93);box-shadow:0 1px 0 #282520}
+
+/* ── AMBIENT GLOW ── */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 50% at 90% 10%,rgba(212,87,10,.07) 0%,transparent 65%),
+    radial-gradient(ellipse 55% 45% at 5% 85%,rgba(212,87,10,.05) 0%,transparent 60%);
+  animation:gPulse 10s ease-in-out infinite alternate;
+}
+body.dark::before{
+  background:
+    radial-gradient(ellipse 70% 50% at 90% 10%,rgba(212,87,10,.18) 0%,transparent 65%),
+    radial-gradient(ellipse 55% 45% at 5% 85%,rgba(212,87,10,.12) 0%,transparent 60%);
+}
+@keyframes gPulse{0%{opacity:.5}100%{opacity:1}}
+
+/* ── LAYOUT ── */
+section,nav,footer,.ticker,.gumroad-bar,.cta-band,.books-strip,#sticky-bar,.wa-fab,.mob-menu{position:relative;z-index:1}
+.c{max-width:1060px;margin:0 auto;padding:0 clamp(1.25rem,5vw,2.5rem)}
+.cw{max-width:1280px;margin:0 auto;padding:0 clamp(1.25rem,5vw,2.5rem)}
+
+/* ── TYPE ── */
+.serif{font-family:'Playfair Display',Georgia,serif}
+.kicker{font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--a)}
+.body{font-size:clamp(.9rem,1.8vw,1rem);color:var(--muted);line-height:1.85;font-weight:300}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:.9rem 2rem;border-radius:0;transition:all .22s var(--ease);cursor:pointer;min-height:48px;white-space:nowrap;-webkit-tap-highlight-color:transparent;border:none}
+.btn svg{width:13px;height:13px;flex-shrink:0;transition:transform .2s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn-a{background:var(--a);color:#fff}
+.btn-a:hover{background:#b94608;transform:translateY(-1px)}
+.btn-night{background:var(--night);color:#fff}
+.btn-night:hover{background:#222;transform:translateY(-1px)}
+.btn-outline{background:transparent;border:1.5px solid currentColor;color:var(--ink)}
+.btn-outline:hover{background:var(--ink);color:var(--cream)}
+.btn-outline-inv{background:transparent;border:1.5px solid rgba(255,255,255,.3);color:#fff}
+.btn-outline-inv:hover{background:#fff;color:var(--night)}
+
+/* ── GUMROAD STICKY BAR (top) ── */
+.gumroad-bar{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:var(--a);
+  display:flex;align-items:center;justify-content:center;gap:1.5rem;
+  padding:.55rem 1.25rem;
+}
+.gumroad-bar p{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#fff}
+.gumroad-bar a{
+  font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:#fff;border:1px solid rgba(255,255,255,.5);
+  padding:.22rem .85rem;border-radius:0;
+  transition:background .18s,border-color .18s;white-space:nowrap;
+}
+.gumroad-bar a:hover{background:rgba(255,255,255,.18);border-color:#fff}
+.gumroad-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:.9rem;cursor:pointer;padding:0 0 0 .5rem;line-height:1;transition:color .18s;flex-shrink:0}
+.gumroad-close:hover{color:#fff}
+
+/* ── THEME TOGGLE ── */
+.theme-toggle{width:36px;height:36px;border-radius:0;display:flex;align-items:center;justify-content:center;background:transparent;border:1px solid rgba(255,255,255,.2);cursor:pointer;transition:all .22s;flex-shrink:0;-webkit-tap-highlight-color:transparent}
+.theme-toggle:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.5)}
+#nav.solid .theme-toggle{border-color:var(--rule)}
+#nav.solid .theme-toggle:hover{background:var(--warm);border-color:var(--ink)}
+.theme-toggle svg{width:14px;height:14px;stroke:#fff;flex-shrink:0}
+#nav.solid .theme-toggle svg{stroke:var(--ink)}
+body.dark #nav.solid .theme-toggle svg{stroke:#F0EBE2}
+.icon-sun{display:none}.icon-moon{display:block}
+body.dark .icon-sun{display:block}body.dark .icon-moon{display:none}
+
+/* ── STICKY MOBILE CTA ── */
+#sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:810;padding:.8rem 1.25rem calc(.8rem + env(safe-area-inset-bottom));background:rgba(247,243,236,.96);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-top:1px solid var(--rule);display:flex;gap:.75rem;align-items:center;transform:translateY(110%);transition:transform .45s var(--ease)}
+body.dark #sticky-bar{background:rgba(12,12,10,.96)}
+#sticky-bar.show{transform:translateY(0)}
+.sb-label{font-size:.7rem;color:var(--muted);font-weight:300;flex:1;min-width:0;overflow:hidden}
+.sb-label strong{color:var(--ink);font-weight:700;display:block;font-size:.75rem;letter-spacing:.02em;text-transform:uppercase}
+@media(min-width:768px){#sticky-bar{display:none}}
+
+/* ── NAV ── */
+#nav{position:fixed;left:0;right:0;z-index:900;height:52px;display:flex;align-items:center;transition:background .35s var(--ease),box-shadow .35s var(--ease);top:32px}
+#nav.solid{background:rgba(247,243,236,.94);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 1px 0 var(--rule)}
+#nav.dark-nav{background:rgba(12,12,10,.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.nav-bar-hidden #nav{top:0}
+.nav-row{display:flex;align-items:center;justify-content:space-between;width:100%}
+.nav-logo img{height:24px;display:block;transition:filter .3s}
+.nav-logo img.inv{filter:invert(1) brightness(2.5)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);transition:color .18s}
+.nav-links a:hover{color:#fff}
+#nav.solid .nav-links a{color:var(--muted)}
+#nav.solid .nav-links a:hover{color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:.65rem}
+.ham{display:none;flex-direction:column;gap:4px;padding:8px;cursor:pointer}
+.ham span{display:block;width:20px;height:1.5px;border-radius:0;transition:.22s var(--ease);background:#fff}
+#nav.solid .ham span{background:var(--ink)}
+.ham.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.ham.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+.mob-menu{display:none;position:fixed;inset:0;z-index:870;background:var(--night);flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:'Playfair Display',serif;font-size:clamp(2rem,7vw,3.5rem);font-weight:400;color:rgba(255,255,255,.3);transition:color .2s;letter-spacing:-.02em}
+.mob-menu a:hover,.mob-menu a.hi{color:#fff}
+.mob-menu a.hi{color:var(--a) !important}
+.mob-rule{width:40px;height:1px;background:rgba(255,255,255,.08)}
+
+/* ── HERO ── */
+#hero{
+  background:var(--night);min-height:100svh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  overflow:hidden;position:relative;z-index:1;
+  padding-top:calc(32px + 52px);
+}
+.hero-grain{position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");background-size:400px;pointer-events:none}
+.hero-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 65% 60% at 78% 32%,rgba(212,87,10,.15) 0%,transparent 58%),radial-gradient(ellipse 40% 40% at 8% 78%,rgba(212,87,10,.07) 0%,transparent 55%);animation:gPulse 9s ease-in-out infinite alternate}
+.hero-inner{position:relative;z-index:2;padding:clamp(3rem,8vh,6rem) 0 clamp(3rem,6vh,5rem)}
+.hero-eyebrow{display:flex;align-items:center;gap:.75rem;margin-bottom:2.5rem}
+.hero-eye-dot{width:6px;height:6px;background:var(--a);flex-shrink:0;animation:gPulse 2s ease-in-out infinite alternate}
+.hero-eye-text{font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+h1.hero-h{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(3rem,11vw,8rem);
+  line-height:.96;letter-spacing:-.04em;font-weight:400;
+  color:#fff;margin-bottom:2rem;
+}
+h1.hero-h em{font-style:italic;color:var(--a)}
+.hero-bottom{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end;padding-top:3rem;border-top:1px solid rgba(255,255,255,.07)}
+.hero-sub{font-size:clamp(.88rem,1.8vw,.98rem);color:rgba(255,255,255,.35);line-height:1.8;font-weight:300;max-width:420px}
+.hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:1.5rem}
+.hero-nums{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.hn-val{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(2rem,4vw,3.2rem);color:#fff;line-height:1}
+.hn-val sup{font-size:.38em;color:var(--a);font-style:normal;vertical-align:super}
+.hn-lbl{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:.2rem}
+
+/* ── TICKER ── */
+.ticker{overflow:hidden;background:var(--night);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);padding:.85rem 0;position:relative}
+.ticker::before,.ticker::after{content:'';position:absolute;top:0;bottom:0;width:160px;z-index:2;pointer-events:none}
+.ticker::before{left:0;background:linear-gradient(to right,var(--night),transparent)}
+.ticker::after{right:0;background:linear-gradient(to left,var(--night),transparent)}
+body.dark .ticker::before{background:linear-gradient(to right,#0C0C0A,transparent)}
+body.dark .ticker::after{background:linear-gradient(to left,#0C0C0A,transparent)}
+.tick-track{display:flex;width:max-content;animation:tick 35s linear infinite}
+.tick-track:hover{animation-play-state:paused}
+.tick-item{display:flex;align-items:center;gap:.75rem;padding:0 2.75rem;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.45);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;cursor:default;transition:color .2s}
+.tick-item:hover{color:#fff}
+.tick-sep{width:4px;height:4px;background:var(--a);flex-shrink:0;box-shadow:0 0 10px var(--a),0 0 22px rgba(212,87,10,.5)}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SECTIONS ── */
+.sec{padding:clamp(5rem,10vw,9rem) 0}
+.sec-sm{padding:clamp(3rem,6vw,5rem) 0}
+.bg-cream{background:var(--cream)}
+.bg-warm{background:var(--warm)}
+.bg-night{background:var(--night)}
+
+/* ── SECTION HEADERS ── */
+.sec-header{display:flex;align-items:flex-start;justify-content:space-between;gap:3rem;flex-wrap:wrap;margin-bottom:clamp(3rem,6vw,5rem)}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,6vw,5rem);line-height:1;letter-spacing:-.035em;font-weight:400;color:var(--ink);margin:.6rem 0 0}
+.sec-title-inv{color:#fff}
+.sec-num{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--rule);margin-top:.3rem}
+
+/* ── PROBLEM ── */
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,7vw,8rem);align-items:start}
+.pull-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.3rem,2.8vw,1.9rem);line-height:1.45;color:var(--ink);padding-left:1.5rem;border-left:2px solid var(--a);margin:2rem 0}
+.pain-list{display:flex;flex-direction:column}
+.pain-item{display:grid;grid-template-columns:3rem 1fr;gap:.75rem;padding:1.2rem 0;border-bottom:1px solid var(--rule);align-items:start}
+.pain-item:first-child{border-top:1px solid var(--rule)}
+.pain-idx{font-size:.6rem;font-weight:700;letter-spacing:.1em;color:var(--a);padding-top:.15rem}
+.pain-txt{font-size:.88rem;color:var(--muted);line-height:1.7;font-weight:300}
+
+/* ── SERVICES ── */
+.svc-shell{border:1px solid var(--rule);overflow:hidden;background:var(--cream)}
+.svc-head{padding:clamp(1.25rem,2.5vw,1.75rem) clamp(1.25rem,2.5vw,2rem);display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:center;cursor:pointer;transition:background .18s;border-bottom:1px solid var(--rule);-webkit-tap-highlight-color:transparent;user-select:none}
+.svc-head:hover{background:var(--warm)}
+.svc-head.feat{background:var(--night);color:#fff}
+.svc-head.feat:hover{background:#1a1a18}
+.svc-pill{font-size:.56rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.22rem .7rem;display:inline-block;margin-bottom:.5rem;border:1px solid var(--rule);color:var(--muted)}
+.svc-pill-pop{border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.5)}
+.svc-pill-new{border-color:var(--a-ring);color:var(--a)}
+.svc-name{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,2.8vw,1.7rem);font-weight:400;letter-spacing:-.015em}
+.svc-tagline{font-size:.78rem;font-weight:300;color:var(--muted);margin-top:.25rem}
+.svc-head.feat .svc-tagline{color:rgba(255,255,255,.45)}
+.svc-right{display:flex;align-items:center;gap:1rem;text-align:right}
+.svc-price{font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem;white-space:nowrap}
+.svc-price small{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-style:normal;font-size:.62rem;font-weight:300;color:var(--muted);margin-top:.1rem}
+.svc-head.feat .svc-price{color:#fff}
+.svc-head.feat .svc-price small{color:rgba(255,255,255,.4)}
+.chevron{transition:transform .22s var(--ease);color:var(--muted);flex-shrink:0}
+.svc-head.open .chevron{transform:rotate(180deg)}
+.svc-head.feat .chevron{color:rgba(255,255,255,.5)}
+.svc-panel{display:none;padding:0 clamp(1.25rem,2.5vw,2rem) clamp(1.25rem,2.5vw,1.75rem);background:var(--warm);border-bottom:1px solid var(--rule)}
+.svc-panel.open{display:block}
+.svc-pi{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;padding-top:1.25rem}
+.svc-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.svc-list li{font-size:.8rem;color:var(--muted);display:flex;align-items:flex-start;gap:.65rem;font-weight:300;line-height:1.55}
+.svc-list li::before{content:'';width:4px;height:4px;background:var(--a);flex-shrink:0;margin-top:.5rem}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(3rem,6vw,7rem);align-items:start}
+.photo-pin{position:sticky;top:6rem}
+.photo-frame{aspect-ratio:2/3;overflow:hidden;background:var(--warm);border:1px solid var(--rule);position:relative}
+.photo-empty{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;color:var(--rule)}
+.photo-empty svg{width:36px;height:36px}
+.photo-empty p{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--rule)}
+.photo-cap{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,.75))}
+.photo-cap strong{font-family:'Playfair Display',serif;font-size:.95rem;color:#fff;display:block;font-weight:400}
+.photo-cap span{font-size:.64rem;color:rgba(255,255,255,.45)}
+.edu-stack{display:flex;flex-direction:column;gap:.5rem;margin-top:1.5rem}
+.edu-row{padding:.85rem 1rem;border:1px solid var(--rule);background:var(--cream)}
+.edu-deg{font-size:.8rem;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+.edu-school{font-size:.7rem;color:var(--muted);font-weight:300;margin-top:.15rem}
+.about-body p{font-size:.93rem;color:var(--muted);line-height:1.85;font-weight:300;margin-bottom:1.1rem}
+.about-body p strong{color:var(--ink);font-weight:600}
+.chip-row{display:flex;flex-wrap:wrap;gap:.35rem;margin:1rem 0}
+.chip{font-size:.64rem;font-weight:600;letter-spacing:.05em;padding:.28rem .7rem;background:var(--warm);border:1px solid var(--rule);color:var(--muted)}
+.ventures{display:flex;flex-direction:column;gap:.5rem;margin-top:.85rem}
+.vent{display:flex;align-items:center;gap:.9rem;padding:.85rem 1.1rem;border:1px solid var(--rule);background:var(--cream);transition:border-color .18s,transform .2s var(--ease)}
+.vent:hover{border-color:var(--a);transform:translateX(4px)}
+.v-dot{width:6px;height:6px;background:var(--a);flex-shrink:0}
+.v-name{font-size:.82rem;font-weight:600;color:var(--ink)}
+.v-desc{font-size:.7rem;color:var(--muted);margin-left:auto;font-weight:300}
+
+/* ── PROCESS ── */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--rule);margin-top:3.5rem}
+.step{padding:2rem 1.5rem;border-right:1px solid var(--rule);transition:background .18s}
+.step:last-child{border-right:none}
+.step:hover{background:var(--warm)}
+.step-n{font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--a);margin-bottom:1.5rem}
+.step h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.6rem;letter-spacing:-.01em;line-height:1.25}
+.step p{font-size:.78rem;color:var(--muted);line-height:1.7;font-weight:300}
+
+/* ── AI SECTION ── */
+.ai-top{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end;margin-bottom:2.5rem}
+.ai-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.ai-card{background:var(--cream);padding:1.75rem;display:flex;flex-direction:column;gap:.85rem;min-height:240px;transition:background .2s}
+body.dark .ai-card{background:var(--warm)}
+.ai-card:hover{background:var(--warm)}
+body.dark .ai-card:hover{background:#1a1a18}
+.ai-card.skel .ai-cat,.ai-card.skel .ai-ttl,.ai-card.skel .ai-txt,.ai-card.skel .ai-imp{border-radius:0;color:transparent!important;background:linear-gradient(90deg,var(--warm) 25%,var(--rule) 50%,var(--warm) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite}
+.ai-card.skel .ai-cat{height:18px;width:80px}.ai-card.skel .ai-ttl{height:52px}.ai-card.skel .ai-txt{height:72px;flex:1}.ai-card.skel .ai-imp{height:40px}
+@keyframes shimmer{to{background-position:-200% 0}}
+.ai-cat{font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--a);align-self:flex-start}
+.ai-ttl{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:400;color:var(--ink);line-height:1.3;letter-spacing:-.01em}
+.ai-txt{font-size:.78rem;color:var(--muted);line-height:1.65;font-weight:300;flex:1}
+.ai-imp{font-size:.72rem;font-weight:600;color:var(--a);background:var(--a-bg);padding:.55rem .8rem;display:flex;align-items:flex-start;gap:.4rem;line-height:1.45}
+.ai-imp::before{content:'↗';flex-shrink:0}
+.ai-refresh{display:inline-flex;align-items:center;gap:.45rem;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:color .18s;margin-top:1.75rem}
+.ai-refresh:hover{color:var(--a)}
+.ai-refresh svg{width:13px;height:13px;transition:transform .4s var(--ease)}
+.ai-refresh:hover svg{transform:rotate(180deg)}
+
+/* ── WRITING LIST ── */
+.writing-list{display:flex;flex-direction:column;border:1px solid var(--rule);background:var(--cream);margin-top:2rem}
+.art-row{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:1.25rem;padding:1.2rem 1.5rem;border-bottom:1px solid var(--rule);color:var(--ink);transition:background .16s;-webkit-tap-highlight-color:transparent}
+.art-row:last-child{border-bottom:none}
+.art-row:hover{background:var(--warm)}
+.art-row:hover .art-arrow{transform:translateX(4px);color:var(--a)}
+.art-tag{font-size:.56rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--a);border:1px solid var(--a-ring);padding:.2rem .6rem;white-space:nowrap}
+.art-title{font-family:'Playfair Display',serif;font-size:.98rem;font-weight:400;color:var(--ink);line-height:1.3;letter-spacing:-.01em}
+.art-meta{font-size:.64rem;color:var(--muted);font-weight:300;white-space:nowrap}
+.art-arrow{width:14px;height:14px;color:var(--rule);flex-shrink:0;transition:transform .2s var(--ease),color .2s}
+
+/* ── RESULTS ── */
+.results-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.res-block{background:var(--cream);padding:clamp(1.75rem,3vw,2.5rem)}
+body.dark .res-block{background:var(--warm)}
+.res-kpi{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(3rem,5.5vw,5rem);color:var(--ink);line-height:1;margin-bottom:.5rem}
+.res-kpi sup{font-size:.35em;vertical-align:super;font-style:normal;color:var(--a)}
+.res-client{font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--a);margin-bottom:.6rem;display:block}
+.res-desc{font-size:.8rem;color:var(--muted);line-height:1.65;font-weight:300}
+
+/* ── LEAD MAGNET ── */
+.magnet{background:var(--night);padding:clamp(3rem,6vw,5rem);display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,6rem);align-items:center}
+.mag-left h2{color:#fff;margin-bottom:.85rem}
+.mag-left p{color:rgba(255,255,255,.35);font-size:.9rem;line-height:1.8;font-weight:300;margin-bottom:1.5rem}
+.mag-pts{display:flex;flex-direction:column;gap:.6rem}
+.mag-pts li{font-size:.8rem;color:rgba(255,255,255,.35);display:flex;gap:.7rem;align-items:flex-start;font-weight:300;list-style:none}
+.mag-pts li::before{content:'';width:4px;height:4px;background:var(--a);flex-shrink:0;margin-top:.55rem}
+.mag-right{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:2rem;position:relative;overflow:hidden}
+.mag-right::before{content:'';position:absolute;top:0;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent,var(--a),transparent)}
+.mag-doc{background:var(--a);padding:1.25rem;margin-bottom:1.75rem}
+.mag-doc .ey{font-size:.56rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.35rem}
+.mag-doc h4{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:#fff;line-height:1.3;font-weight:400}
+.mf{margin-bottom:.75rem}
+.mf label{display:block;font-size:.56rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.3rem}
+.mf input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:.8rem 1rem;font-size:.875rem;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;outline:none;transition:border-color .2s;min-height:46px;border-radius:0}
+.mf input:focus{border-color:var(--a)}
+.mf input::placeholder{color:rgba(255,255,255,.15)}
+.mf-note{font-size:.6rem;color:rgba(255,255,255,.18);text-align:center;margin-top:.75rem;line-height:1.5}
+
+/* ── CTA BAND ── */
+.cta-band{background:var(--a);text-align:center;padding:clamp(4.5rem,9vw,8rem) 0}
+.cta-band h2{color:#fff;margin-bottom:.85rem}
+.cta-band p{color:rgba(255,255,255,.65);font-size:clamp(.88rem,1.8vw,1rem);line-height:1.8;max-width:500px;margin:0 auto 2.5rem;font-weight:300}
+.cta-row{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,7rem);align-items:start}
+.con-ways{display:flex;flex-direction:column;gap:.6rem;margin-top:1.75rem}
+.con-way{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;border:1px solid var(--rule);background:var(--cream);transition:border-color .18s,transform .18s var(--ease);color:var(--ink)}
+.con-way:hover{border-color:var(--a);transform:translateX(3px)}
+.con-ico{width:38px;height:38px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--warm)}
+.con-ico svg{width:17px;height:17px}
+.con-t strong{display:block;font-size:.82rem;font-weight:600;color:var(--ink)}
+.con-t span{font-size:.72rem;color:var(--muted);font-weight:300}
+.cal-placeholder{border:1px dashed var(--rule);min-height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.65rem;padding:1.75rem;text-align:center;margin-top:1.25rem}
+.cal-placeholder p{font-size:.75rem;color:var(--muted);line-height:1.6;font-weight:300}
+.con-form{background:var(--warm);border:1px solid var(--rule);padding:2rem}
+.con-form h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:400;letter-spacing:-.015em;margin-bottom:1.5rem;color:var(--ink)}
+.cf-2{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-bottom:.65rem}
+.cf{margin-bottom:.65rem}
+.cf label{display:block;font-size:.56rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem}
+.cf input,.cf textarea,.cf select{width:100%;background:var(--cream);border:1.5px solid var(--rule);padding:.78rem .95rem;font-size:.875rem;color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;outline:none;transition:border-color .2s;min-height:46px;appearance:none;resize:vertical;border-radius:0}
+.cf input:focus,.cf textarea:focus,.cf select:focus{border-color:var(--a)}
+.cf textarea{min-height:100px}
+
+/* ── BOOKS STRIP ── */
+.books-strip{background:var(--night);padding:clamp(2.5rem,5vw,4rem) 0;border-top:1px solid rgba(255,255,255,.05)}
+.books-inner{display:flex;align-items:center;justify-content:space-between;gap:2.5rem;flex-wrap:wrap}
+.books-left{flex:1;min-width:200px}
+.books-hed{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:400;color:#fff;margin:.5rem 0 .65rem;line-height:1.15;letter-spacing:-.02em}
+.books-sub{font-size:.8rem;color:rgba(255,255,255,.3);line-height:1.7;font-weight:300;max-width:360px}
+.books-ctas{display:flex;gap:.75rem;flex-shrink:0;flex-wrap:wrap}
+.book-btn{display:flex;align-items:center;gap:.85rem;padding:.95rem 1.4rem;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#fff;min-width:180px;transition:all .2s var(--ease);-webkit-tap-highlight-color:transparent}
+.book-btn:hover{border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.09);transform:translateY(-2px)}
+.book-btn-a{background:var(--a);border-color:transparent}
+.book-btn-a:hover{background:#b94608;border-color:transparent}
+.book-ico{width:36px;height:36px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,.09)}
+.book-btn-a .book-ico{background:rgba(255,255,255,.2)}
+.book-plat{display:block;font-size:.56rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.15rem}
+.book-btn-a .book-plat{color:rgba(255,255,255,.65)}
+.book-lbl{display:block;font-size:.82rem;font-weight:700;color:#fff}
+
+/* ── FOOTER ── */
+footer{background:#080806;padding:4rem 0 2rem;color:rgba(255,255,255,.35)}
+.foot-grid{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:1.75rem}
+.fb img{filter:invert(1) brightness(2);opacity:.45;height:22px;margin-bottom:1.1rem}
+.fb p{font-size:.78rem;line-height:1.75;font-weight:300;max-width:200px}
+.fc h4{font-size:.56rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:1rem}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.fc li a{font-size:.78rem;color:rgba(255,255,255,.3);transition:color .18s;font-weight:300}
+.fc li a:hover{color:#fff}
+.foot-btm{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem}
+.foot-btm p{font-size:.63rem;color:rgba(255,255,255,.16)}
+.foot-soc{display:flex;gap:1.75rem}
+.foot-soc a{font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.18);transition:color .18s}
+.foot-soc a:hover{color:#fff}
+
+/* ── WA FAB ── */
+.wa-fab{position:fixed;right:1.25rem;z-index:700;bottom:calc(1.25rem + env(safe-area-inset-bottom));width:48px;height:48px;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.35);transition:transform .2s var(--ease)}
+.wa-fab:hover{transform:scale(1.08)}
+.wa-fab svg{width:24px;height:24px;fill:#fff}
+@media(max-width:767px){.wa-fab{bottom:calc(5rem + env(safe-area-inset-bottom))}}
+
+/* ── REVEAL ── */
+.rv{opacity:1;transform:none;transition:opacity .6s var(--ease2),transform .6s var(--ease2)}
+.js-on .rv{opacity:0;transform:translateY(20px)}
+.js-on .rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.09s}
+.rv[data-d="2"]{transition-delay:.18s}
+.rv[data-d="3"]{transition-delay:.27s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .nav-links,.nav-desk-cta{display:none}
+  .ham{display:flex}
+  .prob-grid,.about-grid,.contact-grid,.magnet,.ai-top{grid-template-columns:1fr;gap:2.5rem}
+  .ai-grid{grid-template-columns:1fr}
+  .results-strip{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr;gap:0}
+  .step{border-bottom:1px solid var(--rule)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .photo-pin{position:static}
+  .photo-frame{aspect-ratio:3/2;max-height:320px}
+  .v-desc{display:none}
+  .svc-pi{grid-template-columns:1fr}
+  .hero-bottom{grid-template-columns:1fr;gap:2rem}
+  .hero-right{align-items:flex-start}
+  .hero-nums{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:680px){
+  .books-inner{flex-direction:column;align-items:flex-start}
+  .books-ctas{width:100%;flex-direction:column}
+  .book-btn{min-width:0;width:100%}
+  .gumroad-bar span{display:none}
+}
+@media(max-width:540px){
+  .steps{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .hero-nums{grid-template-columns:repeat(2,1fr)}
+  .hero-ctas,.cta-row{flex-direction:column;align-items:stretch}
+  .hero-ctas .btn,.cta-row .btn{max-width:380px;width:100%}
+  .cf-2{grid-template-columns:1fr}
+  .svc-head{grid-template-columns:1fr}
+  .svc-right{justify-content:flex-start;text-align:left}
+  .art-row{grid-template-columns:1fr auto;gap:.75rem}
+  .art-tag,.art-meta{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- GUMROAD STICKY BAR -->
+<div class="gumroad-bar" id="gumroad-bar">
+  <p>📖 <span>New guide — The 3-Page Brand Brief:</span> Clarify your positioning in a weekend.</p>
+  <a href="https://gumroad.com/products/rcgbr/edit" target="_blank" rel="noopener">Get it Free →</a>
+  <button class="gumroad-close" onclick="document.getElementById('gumroad-bar').style.display='none';document.body.classList.add('nav-bar-hidden')" aria-label="Close">✕</button>
+</div>
+
+<!-- STICKY MOBILE CTA -->
+<div id="sticky-bar">
+  <div class="sb-label">
+    <strong>Free Strategy Call</strong>
+    30 min · No pitch · Real clarity
+  </div>
+  <a href="#contact" class="btn btn-a" style="padding:.7rem 1.3rem;font-size:.72rem;flex-shrink:0">
+    Book Now
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</div>
+
+<!-- NAV -->
+<nav id="nav" class="dark-nav">
+  <div class="cw nav-row">
+    <a href="/" class="nav-logo">
+      <img src="ymk-digital-logo-accent-720x120.png" alt="YMK Digital" id="logo" class="inv">
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#ai-news">AI</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="brandmind/" style="color:var(--amber)!important">BrandMind ✦</a></li>
+      <li><a href="https://www.youtube.com/@YashasviKashyap" target="_blank" rel="noopener">YouTube</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#contact" class="btn btn-a nav-desk-cta" style="padding:.6rem 1.35rem;font-size:.72rem">Book a Call</a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mob">
+  <a href="#services" onclick="closeMob()">Services</a>
+  <div class="mob-rule"></div>
+  <a href="#about"    onclick="closeMob()">About</a>
+  <a href="#ai-news"  onclick="closeMob()">AI for SMBs</a>
+  <a href="#writing"  onclick="closeMob()">Writing</a>
+  <a href="brandmind/" style="color:var(--a)" onclick="closeMob()">BrandMind ✦</a>
+  <a href="https://www.youtube.com/@YashasviKashyap" target="_blank" rel="noopener" onclick="closeMob()">YouTube</a>
+  <a href="#contact"  onclick="closeMob()">Contact</a>
+  <div class="mob-rule"></div>
+  <a href="#contact"  onclick="closeMob()" class="hi">Book a Free Call →</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grain" aria-hidden="true"></div>
+  <div class="hero-glow"  aria-hidden="true"></div>
+  <div class="c hero-inner">
+    <div class="hero-eyebrow rv">
+      <div class="hero-eye-dot" aria-hidden="true"></div>
+      <span class="hero-eye-text">Yashasvi Meenu Kashyap · Brand Strategist &amp; Creative Consultant</span>
+    </div>
+    <h1 class="hero-h rv">
+      Your brand<br>has a <em>story</em><br>problem.
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-sub rv">15+ years. 9 ad agencies. Samsung, Honda Cars, Pepsi, Gujarat Tourism. Strategy-first, story-always. For SMBs ready to stop being invisible.</p>
+      <div class="hero-right rv" data-d="1">
+        <div class="hero-nums">
+          <div><div class="hn-val">15<sup>+</sup></div><div class="hn-lbl">Years in field</div></div>
+          <div><div class="hn-val">9<sup>+</sup></div><div class="hn-lbl">Ad agencies</div></div>
+          <div><div class="hn-val">10<sup>+</sup></div><div class="hn-lbl">Major brands</div></div>
+          <div><div class="hn-val">3</div><div class="hn-lbl">Ventures built</div></div>
+        </div>
+        <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+          <a href="#contact" class="btn btn-a">
+            Free Strategy Call
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#services" class="btn btn-outline-inv">See Services</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-label="Clients and agencies">
+  <div class="tick-track" aria-hidden="true">
+    <span class="tick-item"><span class="tick-sep"></span>Samsung</span>
+    <span class="tick-item"><span class="tick-sep"></span>Honda Cars</span>
+    <span class="tick-item"><span class="tick-sep"></span>Pepsi</span>
+    <span class="tick-item"><span class="tick-sep"></span>Amway</span>
+    <span class="tick-item"><span class="tick-sep"></span>Gujarat Tourism</span>
+    <span class="tick-item"><span class="tick-sep"></span>Homecenter</span>
+    <span class="tick-item"><span class="tick-sep"></span>Adfactors</span>
+    <span class="tick-item"><span class="tick-sep"></span>Rediffusion Y&amp;R</span>
+    <span class="tick-item"><span class="tick-sep"></span>Cheil Worldwide</span>
+    <span class="tick-item"><span class="tick-sep"></span>JWT &amp; Mudra</span>
+    <span class="tick-item"><span class="tick-sep"></span>Samsung</span>
+    <span class="tick-item"><span class="tick-sep"></span>Honda Cars</span>
+    <span class="tick-item"><span class="tick-sep"></span>Pepsi</span>
+    <span class="tick-item"><span class="tick-sep"></span>Amway</span>
+    <span class="tick-item"><span class="tick-sep"></span>Gujarat Tourism</span>
+    <span class="tick-item"><span class="tick-sep"></span>Homecenter</span>
+    <span class="tick-item"><span class="tick-sep"></span>Adfactors</span>
+    <span class="tick-item"><span class="tick-sep"></span>Rediffusion Y&amp;R</span>
+    <span class="tick-item"><span class="tick-sep"></span>Cheil Worldwide</span>
+    <span class="tick-item"><span class="tick-sep"></span>JWT &amp; Mudra</span>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="sec bg-cream" aria-labelledby="prob-h">
+  <div class="c">
+    <div class="sec-header">
+      <div>
+        <div class="sec-num rv">01 — The Problem</div>
+        <h2 class="sec-title rv" id="prob-h">You're not<br>invisible by<br>accident.</h2>
+      </div>
+      <div style="max-width:420px;align-self:flex-end">
+        <p class="body rv">Most SMBs invest in execution long before nailing the message. Strategy comes last — which means every rupee before it is wasted on noise. My job is to reverse that sequence.</p>
+        <a href="#contact" class="btn btn-night rv" style="margin-top:1.75rem">
+          Talk About Your Business
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="prob-grid">
+      <blockquote class="pull-quote rv">"You're invisible because no one has told your story in a way that makes the right people stop."</blockquote>
+      <ul class="pain-list">
+        <li class="pain-item rv"><span class="pain-idx">01</span><span class="pain-txt">Ads are running but leads are wrong — unqualified, low-intent, expensive to handle.</span></li>
+        <li class="pain-item rv" data-d="1"><span class="pain-idx">02</span><span class="pain-txt">Content is consistent but building nothing — no authority, no compounding trust.</span></li>
+        <li class="pain-item rv" data-d="2"><span class="pain-idx">03</span><span class="pain-txt">Website exists but doesn't explain why someone should choose you over anyone else.</span></li>
+        <li class="pain-item rv"><span class="pain-idx">04</span><span class="pain-txt">You know your product is excellent — you just can't say it in a way buyers feel.</span></li>
+        <li class="pain-item rv" data-d="1"><span class="pain-idx">05</span><span class="pain-txt">Every competitor looks and sounds exactly like you. No visible reason to pick one.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec bg-warm" id="services" aria-labelledby="svc-h">
+  <div class="c">
+    <div class="sec-header">
+      <div>
+        <div class="sec-num rv">02 — Services</div>
+        <h2 class="sec-title rv" id="svc-h">Three ways<br>to work<br>together.</h2>
+      </div>
+      <p class="body rv" style="max-width:300px;align-self:flex-end">Tap any row to see what's included. Choose based on where you are right now.</p>
+    </div>
+    <div class="svc-shell rv">
+      <div class="svc-head" onclick="toggleSvc(this)" aria-expanded="false">
+        <div>
+          <span class="svc-pill">Brand Sprint · 2 Weeks</span>
+          <div class="svc-name">The Story Fix</div>
+          <div class="svc-tagline">Clarity fast — voice, positioning, copy that converts.</div>
+        </div>
+        <div class="svc-right">
+          <div class="svc-price">₹18,000<small>one-time</small></div>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="svc-panel" role="region">
+        <div class="svc-pi">
+          <ul class="svc-list"><li>Brand Voice &amp; Tone Guide</li><li>Positioning Statement</li><li>Homepage Copy Rewrite</li><li>3 Core Message Frameworks</li></ul>
+          <div><ul class="svc-list" style="margin-bottom:1.25rem"><li>2 × 60-min Strategy Sessions</li><li>Audience Persona Definition</li><li>Competitive Differentiation Map</li></ul><a href="#contact" class="btn btn-a" style="font-size:.72rem;padding:.75rem 1.35rem">Enquire →</a></div>
+        </div>
+      </div>
+      <div class="svc-head feat" onclick="toggleSvc(this)" aria-expanded="false">
+        <div>
+          <span class="svc-pill svc-pill-pop">Most Popular · Retainer</span>
+          <div class="svc-name">The Content Engine</div>
+          <div class="svc-tagline">Authority that compounds. Leads that arrive pre-qualified.</div>
+        </div>
+        <div class="svc-right">
+          <div class="svc-price">₹35,000<small>per month</small></div>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="svc-panel" role="region">
+        <div class="svc-pi">
+          <ul class="svc-list"><li>Monthly Content Strategy &amp; Brief</li><li>8 Short-form Social Posts</li><li>2 Long-form Articles / Blogs</li><li>Bi-weekly Email Newsletter</li></ul>
+          <div><ul class="svc-list" style="margin-bottom:1.25rem"><li>Monthly Performance Review</li><li>Funnel Refinement Recs</li><li>Brand Voice Consistency</li></ul><a href="#contact" class="btn btn-a" style="font-size:.72rem;padding:.75rem 1.35rem">Enquire →</a></div>
+        </div>
+      </div>
+      <div class="svc-head" style="border-bottom:none" onclick="toggleSvc(this)" aria-expanded="false">
+        <div>
+          <span class="svc-pill svc-pill-new">Full System · Project</span>
+          <div class="svc-name">The Growth Build</div>
+          <div class="svc-tagline">Strategy, brand, website, funnels — built for real growth.</div>
+        </div>
+        <div class="svc-right">
+          <div class="svc-price">₹85,000<small>per project</small></div>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="svc-panel" style="border-bottom:none" role="region">
+        <div class="svc-pi">
+          <ul class="svc-list"><li>Full Brand Strategy &amp; Voice Guide</li><li>Website Copy &amp; Creative Direction</li><li>Lead Funnel Architecture</li><li>3-Month Content Roadmap</li></ul>
+          <div><ul class="svc-list" style="margin-bottom:1.25rem"><li>SEO Content Foundation</li><li>5-Part Email Welcome Sequence</li><li>Optional Retainer Follow-on</li></ul><a href="#contact" class="btn btn-a" style="font-size:.72rem;padding:.75rem 1.35rem">Enquire →</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="sec bg-cream">
+  <div class="c">
+    <div class="sec-header">
+      <div>
+        <div class="sec-num rv">03 — Results</div>
+        <h2 class="sec-title rv">Numbers that<br>tell the story.</h2>
+      </div>
+    </div>
+    <div class="results-strip rv">
+      <div class="res-block">
+        <span class="res-client">Honda Cars — Brand Refresh</span>
+        <div class="res-kpi">25<sup>%</sup></div>
+        <p class="res-desc">Uplift in brand recall after full brand refresh and repositioning via Cheil Worldwide.</p>
+      </div>
+      <div class="res-block">
+        <span class="res-client">Amway — Digital Strategy</span>
+        <div class="res-kpi">15<sup>%</sup></div>
+        <p class="res-desc">Growth in client retention from a multi-channel digital strategy combining SEO content and integrated campaigns.</p>
+      </div>
+      <div class="res-block">
+        <span class="res-client">Gujarat Tourism — Campaign</span>
+        <div class="res-kpi">3<sup>×</sup></div>
+        <p class="res-desc">Earned media amplification on a visual storytelling campaign across integrated channels.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec bg-warm" id="about" aria-labelledby="about-h">
+  <div class="c">
+    <div class="about-grid">
+      <div class="photo-pin rv">
+        <div class="photo-frame">
+          <!-- REPLACE with: <img src="photo.jpg" alt="Yashasvi Meenu Kashyap"> -->
+          <div class="photo-empty" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <p>Your photo here</p>
+          </div>
+          <div class="photo-cap">
+            <strong>Yashasvi Meenu Kashyap</strong>
+            <span>Creative Director &amp; Brand Strategist</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-body">
+        <div class="sec-num rv">04 — About</div>
+        <h2 class="sec-title rv" id="about-h" style="margin:.6rem 0 1.75rem">I'm a strategist<br>who <em style="font-style:italic;color:var(--a)">writes.</em><br>That's rare.</h2>
+        <p class="rv">Most consultants build funnels. Most copywriters craft decent words. Very few operate at the intersection — where strategic rigour meets creative craft. That's where businesses change.</p>
+        <p class="rv"><strong>15 years across 9 leading agencies</strong> — Adfactors, Rediffusion Y&amp;R, Cheil Worldwide, JWT and Mudra. Samsung, Honda Cars, Pepsi, Amway, Gujarat Tourism.</p>
+        <p class="rv">Now I bring that same rigour to <strong>growing SMBs, founders, and ambitious creators</strong> who want to build something that lasts beyond the next campaign.</p>
+        <span class="kicker rv" style="display:block;margin:1.5rem 0 .65rem">Core Capabilities</span>
+        <div class="chip-row rv"><span class="chip">Brand Strategy</span><span class="chip">Creative Direction</span><span class="chip">Conversion Copy</span><span class="chip">Content Systems</span><span class="chip">Lead Funnels</span><span class="chip">SEO Content</span><span class="chip">Campaign Concepting</span><span class="chip">AI Creativity</span></div>
+        <span class="kicker rv" style="display:block;margin:1.5rem 0 .65rem">Ventures Co-Founded</span>
+        <div class="ventures">
+          <div class="vent rv"><div class="v-dot"></div><span class="v-name">OneFarm</span><span class="v-desc">Agri-tech · farm-to-consumer</span></div>
+          <div class="vent rv" data-d="1"><div class="v-dot"></div><span class="v-name">Hastagatha</span><span class="v-desc">Digital storytelling studio</span></div>
+          <div class="vent rv" data-d="2"><div class="v-dot"></div><span class="v-name">Converse Convert</span><span class="v-desc">Conversion-focused consultancy</span></div>
+        </div>
+        <a href="#contact" class="btn btn-a rv" style="margin-top:2rem">Work With Me <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec bg-cream">
+  <div class="c">
+    <div class="sec-header">
+      <div>
+        <div class="sec-num rv">05 — Process</div>
+        <h2 class="sec-title rv">From invisible<br>to inevitable.</h2>
+      </div>
+    </div>
+    <div class="steps rv">
+      <div class="step"><div class="step-n">01</div><h3>Listen &amp; Diagnose</h3><p>A deep-dive before a single opinion is formed. No templates, no assumptions.</p></div>
+      <div class="step"><div class="step-n">02</div><h3>Build the Strategy</h3><p>Positioning, voice, audience architecture. Foundation before creative.</p></div>
+      <div class="step"><div class="step-n">03</div><h3>Create &amp; Execute</h3><p>Copy, content, funnels — built against the strategy with a measurable goal.</p></div>
+      <div class="step"><div class="step-n">04</div><h3>Measure &amp; Compound</h3><p>Launch, measure, refine. Great systems compound. Each month builds on the last.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- AI FOR SMBs -->
+<section class="sec bg-warm" id="ai-news" aria-labelledby="ai-h">
+  <div class="c">
+    <div class="sec-header">
+      <div>
+        <div class="sec-num rv">06 — AI Intelligence</div>
+        <h2 class="sec-title rv" id="ai-h">AI that's actually<br>useful for your<br>business.</h2>
+      </div>
+      <div style="max-width:320px;align-self:flex-end">
+        <p class="body rv">The AI landscape moves fast. Here's what matters right now for Indian SMBs.</p>
+        <div class="ai-refresh rv" onclick="loadAI()" role="button" tabindex="0" style="margin-top:1rem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+          Refresh news
+        </div>
+      </div>
+    </div>
+    <div class="ai-grid" id="ai-grid" aria-live="polite">
+      <div class="ai-card skel"><div class="ai-cat">·</div><div class="ai-ttl">·</div><div class="ai-txt">·</div><div class="ai-imp">·</div></div>
+      <div class="ai-card skel"><div class="ai-cat">·</div><div class="ai-ttl">·</div><div class="ai-txt">·</div><div class="ai-imp">·</div></div>
+      <div class="ai-card skel"><div class="ai-cat">·</div><div class="ai-ttl">·</div><div class="ai-txt">·</div><div class="ai-imp">·</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD MAGNET -->
+<section class="sec bg-cream" id="magnet">
+  <div class="c">
+    <div class="magnet rv">
+      <div class="mag-left">
+        <span class="kicker" style="color:rgba(212,87,10,.7)">Free Resource</span>
+        <h2 class="serif" style="font-size:clamp(2rem,4.5vw,3.5rem);line-height:1.05;letter-spacing:-.03em;font-weight:400;color:#fff;margin:.75rem 0 .85rem">The Brand Brief I give every new client.</h2>
+        <p>Before I write a single word for any client, they complete this 3-page exercise. It surfaces the clarity most businesses have been missing for years.</p>
+        <ul class="mag-pts" style="margin-top:1.25rem">
+          <li>Define your brand's positioning in 3 clear sentences</li>
+          <li>Identify the audience that will actually pay you</li>
+          <li>Find the emotional angle your competitors have missed</li>
+          <li>Build a message architecture that scales with growth</li>
+        </ul>
+      </div>
+      <div class="mag-right">
+        <div class="mag-doc"><p class="ey">Free Download</p><h4>The 3-Page Brand Brief That Clears Everything Up</h4></div>
+        <div class="mf"><label for="mg-n">First Name</label><input type="text" id="mg-n" placeholder="Your first name" autocomplete="given-name"></div>
+        <div class="mf"><label for="mg-e">Email Address</label><input type="email" id="mg-e" placeholder="you@yourbusiness.com" autocomplete="email"></div>
+        <div class="mf"><label for="mg-b">Business Type</label><input type="text" id="mg-b" placeholder="e.g. Healthcare, D2C, Coaching…"></div>
+        <button class="btn btn-a" style="width:100%;justify-content:center;margin-top:.25rem" onclick="onMagnet(this)">
+          Send Me the Brief
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <p class="mf-note">No spam. One email. Instant delivery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="c">
+    <h2 class="serif" style="font-size:clamp(2.2rem,5vw,4rem);line-height:1.05;letter-spacing:-.035em;font-weight:400;color:#fff;margin-bottom:.85rem">Ready to build a brand<br>people remember?</h2>
+    <p>The strategy call is free. 30 minutes, no pitch. You leave with clarity on your biggest growth bottleneck.</p>
+    <div class="cta-row">
+      <a href="https://wa.me/918368289737" target="_blank" rel="noopener" class="btn btn-night">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.509 5.837L.057 23.998l6.304-1.431A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.724.846.878-3.617-.234-.373A9.794 9.794 0 012.18 12C2.18 6.578 6.578 2.18 12 2.18S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+        Chat on WhatsApp
+      </a>
+      <a href="#contact" class="btn btn-outline-inv">Send a Message</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="sec bg-cream" id="contact" aria-labelledby="contact-h">
+  <div class="c">
+    <div class="sec-header">
+      <div>
+        <div class="sec-num rv">07 — Contact</div>
+        <h2 class="sec-title rv" id="contact-h">Let's figure out<br>your story.</h2>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <div class="rv">
+        <p class="body" style="margin-bottom:1.75rem">The strategy call is free. 30 minutes, no pitch. You leave knowing your single biggest growth constraint and exactly how to fix it.</p>
+        <div class="con-ways">
+          <a href="https://wa.me/918368289737" target="_blank" rel="noopener" class="con-way">
+            <div class="con-ico"><svg viewBox="0 0 24 24" fill="#16a34a"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.509 5.837L.057 23.998l6.304-1.431A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.724.846.878-3.617-.234-.373A9.794 9.794 0 012.18 12C2.18 6.578 6.578 2.18 12 2.18S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg></div>
+            <div class="con-t"><strong>WhatsApp — Fastest</strong><span>+91 83682 89737 · Usually within the hour</span></div>
+          </a>
+          <a href="mailto:hello@ymk.digital" class="con-way">
+            <div class="con-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+            <div class="con-t"><strong>Email</strong><span>hello@ymk.digital · 24-hour response</span></div>
+          </a>
+          <a href="tel:+918368289737" class="con-way">
+            <div class="con-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#be185d" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.8 19.79 19.79 0 012.18 2a2 2 0 012-.18l3 .01a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div class="con-t"><strong>Phone</strong><span>+91 83682 89737</span></div>
+          </a>
+        </div>
+        <div class="cal-placeholder">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--rule)" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <p><strong style="color:var(--muted);display:block;margin-bottom:.2rem">Booking calendar</strong>Replace with Calendly or Cal.com embed</p>
+        </div>
+      </div>
+      <div class="rv" data-d="1">
+        <div class="con-form">
+          <h3>Send a message</h3>
+          <div class="cf-2">
+            <div class="cf"><label for="cf-n">Name</label><input type="text" id="cf-n" placeholder="Your name" autocomplete="name"></div>
+            <div class="cf"><label for="cf-e">Email</label><input type="email" id="cf-e" placeholder="you@email.com" autocomplete="email"></div>
+          </div>
+          <div class="cf">
+            <label for="cf-s">I'm interested in</label>
+            <select id="cf-s"><option value="">Select a service…</option><option>The Story Fix (₹18,000 Sprint)</option><option>The Content Engine (₹35,000/mo)</option><option>The Growth Build (₹85,000 Project)</option><option>Quick question</option></select>
+          </div>
+          <div class="cf"><label for="cf-p">Phone (optional)</label><input type="tel" id="cf-p" placeholder="+91…" autocomplete="tel"></div>
+          <div class="cf"><label for="cf-m">Tell me about your business</label><textarea id="cf-m" rows="4" placeholder="What are you trying to solve?"></textarea></div>
+          <button class="btn btn-a" style="width:100%;justify-content:center" onclick="onContact(this)">
+            Send Message
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <p class="body" style="text-align:center;margin-top:.75rem;font-size:.75rem">I respond within 24 hours on business days.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WRITING -->
+<section class="sec-sm bg-warm" id="writing">
+  <div class="c">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem">
+      <div>
+        <div class="sec-num rv">08 — Writing</div>
+        <h2 class="serif rv" style="font-size:clamp(1.75rem,4vw,2.75rem);line-height:1.05;letter-spacing:-.03em;font-weight:400;margin:.5rem 0 0;color:var(--ink)">Ideas worth reading.</h2>
+      </div>
+      <a href="blogindex.txt" class="btn btn-outline rv" style="font-size:.72rem">All Articles →</a>
+    </div>
+    <div class="writing-list rv" data-d="1">
+      <a href="blog01.html" class="art-row">
+        <span class="art-tag">Brand Strategy</span>
+        <span class="art-title">Why Emotional Storytelling Beats Hard Selling — Every Time</span>
+        <span class="art-meta">5 min read</span>
+        <svg class="art-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="blog02.html" class="art-row">
+        <span class="art-tag">Content</span>
+        <span class="art-title">The Only 3 Content Pillars Your SMB Will Ever Need</span>
+        <span class="art-meta">3 min read</span>
+        <svg class="art-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="blog03.html" class="art-row">
+        <span class="art-tag">Lead Funnels</span>
+        <span class="art-title">"Trash Leads" Are Costing You More Than You Think</span>
+        <span class="art-meta">4 min read</span>
+        <svg class="art-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKS -->
+<style>
+/* ── BRANDMIND TOOL CARD ── */
+.tool-card{
+  background:var(--night);
+  padding:clamp(2.5rem,5vw,4rem);
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,5vw,5rem);
+  align-items:center;position:relative;overflow:hidden;
+}
+.tool-card::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 70% at 95% 50%, rgba(212,87,10,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 5%  50%, rgba(212,87,10,.08) 0%, transparent 55%);
+}
+.tool-left{position:relative;z-index:1}
+.tool-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--a);border:1px solid var(--a-ring);padding:.25rem .75rem;margin-bottom:1.25rem;
+}
+.tool-tag-dot{width:5px;height:5px;background:var(--a);animation:gPulse 2s ease-in-out infinite alternate}
+.tool-left h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.75rem,4vw,3rem);
+  font-weight:400;line-height:1.05;letter-spacing:-.035em;
+  color:#fff;margin-bottom:1rem;
+}
+.tool-left h2 em{font-style:italic;color:var(--a)}
+.tool-left p{font-size:.9rem;color:rgba(255,255,255,.38);line-height:1.8;font-weight:300;margin-bottom:2rem;max-width:420px}
+.tool-cta-row{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center}
+.tool-btn{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:.9rem 1.75rem;background:var(--a);color:#fff;
+  transition:all .22s var(--ease);text-decoration:none;
+  box-shadow:0 4px 24px var(--a-ring);
+}
+.tool-btn:hover{background:#b94608;transform:translateY(-2px)}
+.tool-btn svg{width:13px;height:13px;transition:transform .2s var(--ease)}
+.tool-btn:hover svg{transform:translateX(4px)}
+.tool-btn-ghost{
+  background:transparent;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);
+  box-shadow:none;
+}
+.tool-btn-ghost:hover{border-color:rgba(255,255,255,.4);color:#fff;background:rgba(255,255,255,.06);transform:none}
+.tool-right{position:relative;z-index:1}
+.tool-genius-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06);
+}
+.tool-genius{
+  background:rgba(255,255,255,.03);padding:.85rem .75rem;text-align:center;
+  transition:background .18s;
+}
+.tool-genius:hover{background:rgba(255,255,255,.07)}
+.tg-name{font-family:'Playfair Display',serif;font-size:.78rem;font-weight:400;font-style:italic;color:rgba(255,255,255,.65);line-height:1.2;margin-bottom:.2rem}
+.tg-tag{font-size:.52rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(212,87,10,.6)}
+.tool-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06);margin-top:1px}
+.ts{background:rgba(255,255,255,.03);padding:.85rem;text-align:center}
+.ts-n{font-family:'Playfair Display',serif;font-style:italic;font-size:1.5rem;color:#fff;line-height:1;margin-bottom:.2rem}
+.ts-l{font-size:.52rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+@media(max-width:860px){
+  .tool-card{grid-template-columns:1fr}
+  .tool-genius-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:480px){
+  .tool-genius-grid{grid-template-columns:repeat(2,1fr)}
+  .tool-stats{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+
+<!-- BRANDMIND TOOL -->
+<section class="sec-sm bg-cream" id="brandmind">
+  <div class="c">
+    <div class="sec-num rv">09 — Free Tool</div>
+  </div>
+  <div class="c" style="margin-top:.75rem">
+    <div class="tool-card rv">
+      <div class="tool-left">
+        <div class="tool-tag">
+          <div class="tool-tag-dot" aria-hidden="true"></div>
+          YMK BrandMind — Free
+        </div>
+        <h2>Think like<br>a <em>legend.</em><br>Brand it.</h2>
+        <p>Pick an advertising genius — Ogilvy, Wieden, Burnett, Jony Ive. Describe your business. Get a full brand strategy written in their voice. Free to use, powered by AI. No account needed.</p>
+        <div class="tool-cta-row">
+          <a href="brandmind/" class="tool-btn">
+            Try BrandMind Free
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#contact" class="tool-btn tool-btn-ghost">Or book a real call</a>
+        </div>
+      </div>
+      <div class="tool-right">
+        <div class="tool-genius-grid">
+          <div class="tool-genius"><div class="tg-name">David Ogilvy</div><div class="tg-tag">Strategy</div></div>
+          <div class="tool-genius"><div class="tg-name">Dan Wieden</div><div class="tg-tag">Culture</div></div>
+          <div class="tool-genius"><div class="tg-name">Leo Burnett</div><div class="tg-tag">Stories</div></div>
+          <div class="tool-genius"><div class="tg-name">Jony Ive</div><div class="tg-tag">Design</div></div>
+          <div class="tool-genius"><div class="tg-name">Rory Sutherland</div><div class="tg-tag">Behaviour</div></div>
+          <div class="tool-genius"><div class="tg-name">Alex Bogusky</div><div class="tg-tag">Disruption</div></div>
+          <div class="tool-genius"><div class="tg-name">Paul Rand</div><div class="tg-tag">Identity</div></div>
+          <div class="tool-genius"><div class="tg-name">Jeff Goodby</div><div class="tg-tag">Wit</div></div>
+        </div>
+        <div class="tool-stats">
+          <div class="ts"><div class="ts-n">8</div><div class="ts-l">Legends</div></div>
+          <div class="ts"><div class="ts-n">8</div><div class="ts-l">Formats</div></div>
+          <div class="ts"><div class="ts-n">∞</div><div class="ts-l">Fusions</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKS -->
+<div class="books-strip">
+  <div class="c books-inner">
+    <div class="books-left">
+      <span class="kicker" style="color:rgba(212,87,10,.65)">Digital Products</span>
+      <p class="books-hed">Words you can<br>take with you.</p>
+      <p class="books-sub">Brand frameworks and strategic thinking — distilled into formats you can use today.</p>
+    </div>
+    <div class="books-ctas">
+      <a href="https://gumroad.com/products/rcgbr/edit" target="_blank" rel="noopener" class="book-btn">
+        <div class="book-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <div><span class="book-plat">Gumroad</span><span class="book-lbl">Get the Guide →</span></div>
+      </a>
+      <a href="https://www.amazon.com/dp/B0G2N51131?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_tpbk" target="_blank" rel="noopener" class="book-btn book-btn-a">
+        <div class="book-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <div><span class="book-plat">Amazon Kindle</span><span class="book-lbl">Read on Kindle →</span></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="cw">
+    <div class="foot-grid">
+      <div class="fb">
+        <img src="ymk-digital-logo-accent-720x120.png" alt="YMK Digital">
+        <p>Strategy first. Story always.<br>Growth that compounds.<br>India-based. Globally minded.</p>
+      </div>
+      <div class="fc">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">The Story Fix</a></li>
+          <li><a href="#services">The Content Engine</a></li>
+          <li><a href="#services">The Growth Build</a></li>
+          <li><a href="#contact">Book a Strategy Call</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h4>Writing</h4>
+        <ul>
+          <li><a href="#magnet">Free Brand Brief</a></li>
+          <li><a href="brandmind/" style="color:var(--amber)">BrandMind Tool ✦</a></li>
+          <li><a href="blog01.html">Emotional Storytelling</a></li>
+          <li><a href="blog02.html">Content Pillars</a></li>
+          <li><a href="blog03.html">Trash Leads</a></li>
+          <li><a href="blogindex.txt">All Articles →</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://wa.me/918368289737" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:hello@ymk.digital">hello@ymk.digital</a></li>
+          <li><a href="tel:+918368289737">+91 83682 89737</a></li>
+          <li><a href="https://www.youtube.com/@YashasviKashyap" target="_blank" rel="noopener">YouTube</a></li>
+          <li><a href="#linkedin"  target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="#instagram" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-btm">
+      <p>© 2026 Yashasvi Meenu Kashyap · YMK Digital. All rights reserved.</p>
+      <div class="foot-soc">
+        <a href="https://www.youtube.com/@YashasviKashyap" target="_blank" rel="noopener">YouTube</a>
+        <a href="#linkedin"  target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#instagram" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://wa.me/918368289737" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WA FAB -->
+<a href="https://wa.me/918368289737" target="_blank" rel="noopener" class="wa-fab" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.509 5.837L.057 23.998l6.304-1.431A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.724.846.878-3.617-.234-.373A9.794 9.794 0 012.18 12C2.18 6.578 6.578 2.18 12 2.18S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+</a>
+
+<script>
+(function(){
+'use strict';
+
+/* THEME */
+const body=document.body,thBtn=document.getElementById('theme-toggle');
+if(localStorage.getItem('ymk-theme')==='dark') body.classList.add('dark');
+thBtn.addEventListener('click',()=>{
+  body.classList.toggle('dark');
+  localStorage.setItem('ymk-theme',body.classList.contains('dark')?'dark':'light');
+});
+
+/* NAV */
+const nav=document.getElementById('nav'),logo=document.getElementById('logo');
+const ham=document.getElementById('ham'),mob=document.getElementById('mob');
+const bar=document.getElementById('sticky-bar');
+let heroH=0;
+function mh(){heroH=document.getElementById('hero').offsetHeight;}
+mh();window.addEventListener('resize',mh,{passive:true});
+function syncNav(){
+  const onHero=window.scrollY<heroH*.88;
+  nav.className=onHero?'dark-nav':'solid';
+  logo.classList.toggle('inv',onHero);
+  ham.classList.toggle('lt',onHero);
+  bar.classList.toggle('show',window.scrollY>heroH*.5);
+}
+syncNav();window.addEventListener('scroll',syncNav,{passive:true});
+
+/* HAM */
+ham.addEventListener('click',()=>{
+  ham.classList.toggle('open');mob.classList.toggle('open');
+  body.style.overflow=mob.classList.contains('open')?'hidden':'';
+});
+window.closeMob=()=>{ham.classList.remove('open');mob.classList.remove('open');body.style.overflow='';};
+
+/* ANCHORS */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href');
+    if(id.length<=1)return;
+    const el=document.querySelector(id);
+    if(el){e.preventDefault();window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-64,behavior:'smooth'});closeMob();}
+  });
+});
+
+/* REVEAL */
+body.classList.add('js-on');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+},{threshold:.07});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+/* ACCORDION */
+window.toggleSvc=function(head){
+  const panel=head.nextElementSibling;
+  if(!panel||!panel.classList.contains('svc-panel'))return;
+  const isOpen=panel.classList.contains('open');
+  document.querySelectorAll('.svc-panel.open').forEach(p=>{
+    p.classList.remove('open');p.previousElementSibling.classList.remove('open');
+    p.previousElementSibling.setAttribute('aria-expanded','false');
+  });
+  if(!isOpen){panel.classList.add('open');head.classList.add('open');head.setAttribute('aria-expanded','true');}
+};
+
+/* MAGNET */
+window.onMagnet=function(btn){
+  const n=document.getElementById('mg-n').value.trim();
+  const e=document.getElementById('mg-e').value.trim();
+  if(!n||!e){toast('Please enter your name and email.','warn');return;}
+  btn.textContent='✓ Brief on its way!';btn.style.background='#16a34a';btn.disabled=true;
+  toast('The Brand Brief is heading to your inbox.','ok');
+};
+
+/* CONTACT */
+window.onContact=function(btn){
+  const n=document.getElementById('cf-n').value.trim();
+  const e=document.getElementById('cf-e').value.trim();
+  const m=document.getElementById('cf-m').value.trim();
+  if(!n||!e||!m){toast('Please fill in name, email and message.','warn');return;}
+  btn.textContent='✓ Message Sent!';btn.style.background='#16a34a';btn.disabled=true;
+  toast("Got it — I'll be in touch within 24 hours.",'ok');
+};
+
+/* TOAST */
+function toast(msg,type){
+  const el=document.createElement('div');
+  el.textContent=msg;
+  Object.assign(el.style,{
+    position:'fixed',bottom:'5.5rem',left:'50%',
+    transform:'translateX(-50%) translateY(6px)',
+    background:type==='ok'?'#16a34a':'#D4570A',
+    color:'#fff',padding:'.65rem 1.4rem',
+    fontSize:'.78rem',fontWeight:'600',letterSpacing:'.04em',textTransform:'uppercase',
+    fontFamily:"'Plus Jakarta Sans',sans-serif",
+    boxShadow:'0 4px 20px rgba(0,0,0,.25)',zIndex:'9999',
+    opacity:'0',transition:'opacity .22s,transform .22s',whiteSpace:'nowrap',
+  });
+  document.body.appendChild(el);
+  requestAnimationFrame(()=>{el.style.opacity='1';el.style.transform='translateX(-50%) translateY(0)';});
+  setTimeout(()=>{el.style.opacity='0';setTimeout(()=>el.remove(),250);},3500);
+}
+
+/* AI */
+async function loadAI(){
+  const grid=document.getElementById('ai-grid');
+  grid.innerHTML=[0,1,2].map(()=>`<div class="ai-card skel"><div class="ai-cat">·</div><div class="ai-ttl">·</div><div class="ai-txt">·</div><div class="ai-imp">·</div></div>`).join('');
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',max_tokens:1000,
+        tools:[{type:'web_search_20250305',name:'web_search'}],
+        messages:[{role:'user',content:`Search for 3 recent, practically useful AI tools or developments for small and medium businesses (SMBs) in India in 2025-2026 — focus on marketing, content creation, customer service, or growth. Return ONLY a raw JSON array with no markdown, no backticks, no extra text: [{"tag":"Category","title":"Title under 10 words","body":"What it is and why it matters to SMBs, 20-25 words","impact":"One specific way an SMB owner can use it today, 15 words"}]`}]
+      })
+    });
+    const data=await res.json();
+    const text=(data.content||[]).map(b=>b.type==='text'?b.text:'').join('');
+    const match=text.match(/\[[\s\S]*?\]/);
+    if(!match)throw new Error('no json');
+    const items=JSON.parse(match[0]);
+    grid.innerHTML=items.slice(0,3).map(item=>`<div class="ai-card" style="opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s"><div class="ai-cat">${esc(item.tag)}</div><div class="ai-ttl">${esc(item.title)}</div><div class="ai-txt">${esc(item.body)}</div><div class="ai-imp">${esc(item.impact)}</div></div>`).join('');
+    requestAnimationFrame(()=>{grid.querySelectorAll('.ai-card').forEach((c,i)=>{setTimeout(()=>{c.style.opacity='1';c.style.transform='none';},i*120);});});
+  }catch(_){
+    grid.innerHTML=`<div class="ai-card" style="grid-column:1/-1;align-items:center;justify-content:center;padding:3rem;text-align:center"><div class="ai-txt">Couldn't load AI news right now. <span onclick="loadAI()" style="color:var(--a);cursor:pointer;font-weight:700">Try again →</span></div></div>`;
+  }
+}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+window.loadAI=loadAI;loadAI();
+
+})();
+</script>
+</body>
+</html>
