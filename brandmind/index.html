@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>YMK BrandMind — AI Brand Strategy Tool by YMK Digital</title>
+<meta name="description" content="Think at the level of the world's greatest creative minds. Free brand strategy tool by Yashasvi Meenu Kashyap — YMK Digital.">
+<link rel="canonical" href="https://www.ymk.digital/brandmind">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ── TOKENS ── */
+:root {
+  --bg:          #0C0C0A;
+  --surface:     #141412;
+  --surface2:    #1C1C1A;
+  --border:      rgba(255,255,255,0.07);
+  --border-h:    rgba(255,255,255,0.16);
+  --text:        #F0EBE2;
+  --muted:       #7A7570;
+  --amber:       #D4570A;
+  --amber-dim:   rgba(212,87,10,0.14);
+  --amber-glow:  rgba(212,87,10,0.07);
+  --amber-ring:  rgba(212,87,10,0.28);
+  /* genius accent colours — kept distinct */
+  --rust:   #c0614a;
+  --sage:   #5e8a6e;
+  --slate:  #6080a0;
+  --violet: #8b6bb5;
+  --teal:   #4a8a8a;
+  --warm:   #c08040;
+  --rose:   #b05878;
+  --pine:   #4a7055;
+  --ease:   cubic-bezier(.22,1,.36,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+body {
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* grain */
+body::before {
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:999;opacity:0.45;
+}
+
+/* ambient glow */
+body::after {
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 55% 40% at 88% 12%, rgba(212,87,10,.1) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 35% at 8% 85%,  rgba(212,87,10,.06) 0%, transparent 55%);
+  animation:glow 10s ease-in-out infinite alternate;
+}
+@keyframes glow{0%{opacity:.5}100%{opacity:1}}
+
+/* ── HEADER ── */
+header {
+  position:sticky;top:0;z-index:200;
+  background:rgba(12,12,10,0.92);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  padding:0 2rem;height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+
+.logo-wrap {
+  display:flex;align-items:center;gap:1rem;text-decoration:none;
+}
+.logo-ymk {
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:400;color:var(--text);letter-spacing:-.01em;
+}
+.logo-ymk span{color:var(--amber);font-style:italic}
+.logo-divider{width:1px;height:16px;background:var(--border)}
+.logo-tool{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+}
+.logo-badge{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid var(--border);padding:.18rem .55rem;color:var(--muted);
+  border-radius:0;
+}
+
+.header-right{display:flex;align-items:center;gap:.75rem}
+
+/* pill-btn removed — no API key modal */
+
+.back-link{
+  font-size:.64rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);transition:color .18s;display:flex;align-items:center;gap:.4rem;
+}
+.back-link:hover{color:var(--text)}
+.back-link svg{width:12px;height:12px}
+
+/* ── RATE LIMIT ── */
+.rate-msg{display:none;padding:.85rem 1.25rem;background:var(--surface2);border:1px solid var(--amber-ring);font-size:.78rem;color:var(--muted);line-height:1.65;text-align:center;margin-bottom:1.5rem}
+.rate-msg.show{display:block}
+.rate-msg a{color:var(--amber);font-weight:600}
+.btn{font-family:'Plus Jakarta Sans',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.7rem 1.5rem;cursor:pointer;transition:all .2s;border:none}
+.btn-amber{background:var(--amber);color:#fff}
+.btn-amber:hover{background:#b94608}
+
+/* ── CONTAINER ── */
+.container{max-width:980px;margin:0 auto;padding:0 2rem;position:relative;z-index:1}
+
+/* ── HERO ── */
+.hero{padding:5rem 0 4rem;text-align:center}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.65rem;
+  font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:2rem;
+  border:1px solid var(--amber-ring);padding:.3rem .9rem;
+}
+.hero-eyebrow-dot{width:5px;height:5px;background:var(--amber);flex-shrink:0}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.5rem,7vw,5.5rem);
+  font-weight:400;line-height:1;letter-spacing:-.04em;
+  color:var(--text);margin-bottom:1.5rem;
+}
+.hero h1 em{font-style:italic;color:var(--amber)}
+.hero h1 strong{font-weight:400;color:rgba(240,235,226,.55)}
+.hero-sub{
+  font-size:clamp(.88rem,1.8vw,.98rem);color:var(--muted);
+  line-height:1.8;font-weight:300;max-width:520px;margin:0 auto 2.5rem;
+}
+.hero-by{
+  display:inline-flex;align-items:center;gap:.65rem;
+  font-size:.65rem;color:var(--muted);font-weight:300;
+  border-top:1px solid var(--border);padding-top:1.5rem;margin-top:.5rem;
+}
+.hero-by a{color:var(--amber);font-weight:600;letter-spacing:.04em;transition:color .18s}
+.hero-by a:hover{color:#F5943A}
+.hero-stats{
+  display:flex;align-items:center;justify-content:center;gap:0;
+  border:1px solid var(--border);margin:2.5rem auto 0;max-width:480px;
+}
+.hero-stat{flex:1;padding:1rem;text-align:center;border-right:1px solid var(--border)}
+.hero-stat:last-child{border-right:none}
+.hero-stat strong{display:block;font-family:'Playfair Display',serif;font-style:italic;font-size:1.75rem;color:var(--text);line-height:1;margin-bottom:.25rem}
+.hero-stat span{font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* ── SECTION HEADS ── */
+.sec-head{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
+.sec-num{
+  font-family:'JetBrains Mono',monospace;font-size:.6rem;
+  letter-spacing:.14em;color:var(--amber);flex-shrink:0;
+}
+.sec-title{
+  font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:400;
+  color:var(--text);letter-spacing:-.01em;white-space:nowrap;
+}
+.sec-line{flex:1;height:1px;background:var(--border)}
+
+/* ── BRIEF ── */
+.brief-wrap{margin-bottom:4rem}
+.brief-tabs{display:flex;gap:0;margin-bottom:1.5rem;border:1px solid var(--border)}
+.brief-tab{
+  flex:1;font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:.75rem 1rem;background:transparent;color:var(--muted);
+  cursor:pointer;transition:all .2s;border:none;border-right:1px solid var(--border);
+}
+.brief-tab:last-child{border-right:none}
+.brief-tab:hover{color:var(--text);background:var(--surface)}
+.brief-tab.active{background:var(--amber);color:#fff}
+.brief-panel{display:none}
+.brief-panel.active{display:block}
+
+.big-textarea{
+  width:100%;background:var(--surface);border:1px solid var(--border);
+  padding:1.25rem 1.5rem;font-size:.9rem;color:var(--text);
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:300;
+  line-height:1.75;outline:none;transition:border-color .2s;
+  min-height:200px;resize:vertical;border-radius:0;
+}
+.big-textarea:focus{border-color:var(--amber)}
+.big-textarea::placeholder{color:var(--muted)}
+
+/* wizard */
+.wizard-wrap{background:var(--surface);border:1px solid var(--border);padding:2rem}
+.wizard-progress{height:2px;background:var(--border);margin-bottom:2rem;overflow:hidden}
+.wizard-bar{height:100%;background:var(--amber);transition:width .35s var(--ease)}
+.wizard-question{
+  font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:400;
+  letter-spacing:-.01em;color:var(--text);margin-bottom:.5rem;line-height:1.3;
+}
+.wizard-hint{font-size:.78rem;color:var(--muted);margin-bottom:1.5rem;font-weight:300}
+.wiz-input{
+  width:100%;background:var(--surface2);border:1px solid var(--border);
+  padding:.85rem 1rem;font-size:.9rem;color:var(--text);
+  font-family:'Plus Jakarta Sans',sans-serif;outline:none;
+  transition:border-color .2s;border-radius:0;
+}
+.wiz-input:focus{border-color:var(--amber)}
+.wiz-chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.wiz-chip{
+  font-size:.7rem;font-weight:600;letter-spacing:.05em;
+  padding:.4rem .9rem;border:1px solid var(--border);
+  background:transparent;color:var(--muted);cursor:pointer;transition:all .18s;
+}
+.wiz-chip:hover{border-color:var(--border-h);color:var(--text)}
+.wiz-chip.on{background:var(--amber);border-color:var(--amber);color:#fff}
+.wiz-step-info{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:var(--muted)}
+.wizard-nav{display:flex;align-items:center;justify-content:space-between;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.wiz-nav-btns{display:flex;gap:.6rem}
+.wiz-btn{
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:.7rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;padding:.6rem 1.25rem;
+  border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;
+}
+.wiz-btn:hover{border-color:var(--border-h);color:var(--text)}
+.wiz-next{border-color:var(--amber);color:var(--amber)}
+.wiz-next:hover{background:var(--amber);color:#fff}
+
+/* ── GENIUS GRID ── */
+.genius-section{margin-bottom:4rem}
+.genius-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
+.genius-card{
+  background:var(--bg);padding:1.5rem;cursor:pointer;
+  position:relative;transition:background .18s;
+  border:none;
+}
+.genius-card:hover{background:var(--surface)}
+.genius-card.active{background:var(--surface2)}
+/* per-genius accent borders on active */
+.genius-card[data-g="ogilvy"].active{box-shadow:inset 0 0 0 1.5px var(--rust)}
+.genius-card[data-g="burnett"].active{box-shadow:inset 0 0 0 1.5px var(--warm)}
+.genius-card[data-g="rand"].active{box-shadow:inset 0 0 0 1.5px var(--sage)}
+.genius-card[data-g="ive"].active{box-shadow:inset 0 0 0 1.5px var(--slate)}
+.genius-card[data-g="wieden"].active{box-shadow:inset 0 0 0 1.5px var(--violet)}
+.genius-card[data-g="bogusky"].active{box-shadow:inset 0 0 0 1.5px var(--teal)}
+.genius-card[data-g="sutherland"].active{box-shadow:inset 0 0 0 1.5px var(--amber)}
+.genius-card[data-g="goodby"].active{box-shadow:inset 0 0 0 1.5px var(--rose)}
+.g-era{font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.12em;color:var(--muted);margin-bottom:.65rem}
+.g-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:400;letter-spacing:-.01em;color:var(--text);margin-bottom:.3rem}
+.g-role{font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300;margin-bottom:.85rem}
+.g-tag{font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:.2rem .55rem;display:inline-block}
+.g-check{
+  position:absolute;top:1rem;right:1rem;width:20px;height:20px;
+  background:var(--amber);display:none;align-items:center;justify-content:center;flex-shrink:0;
+}
+.genius-card.active .g-check{display:flex}
+.g-check svg{width:10px;height:10px}
+.fusion-note{
+  margin-top:1rem;padding:.75rem 1rem;border:1px solid var(--amber-ring);background:var(--amber-dim);
+  display:none;align-items:center;gap:.65rem;font-size:.75rem;color:var(--text);font-weight:300;
+}
+.fusion-note.show{display:flex}
+.fusion-note svg{width:14px;height:14px;flex-shrink:0;color:var(--amber)}
+#fusionList{font-weight:600;color:var(--amber)}
+
+/* ── OUTPUT TYPES ── */
+.types-section{margin-bottom:4rem}
+.type-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
+.type-card{
+  background:var(--bg);padding:1.1rem 1.25rem;cursor:pointer;
+  transition:background .18s;position:relative;
+}
+.type-card:hover{background:var(--surface)}
+.type-card.active{background:var(--surface2)}
+.type-card.active::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--amber)}
+.type-name{font-size:.8rem;font-weight:600;color:var(--text);margin-bottom:.2rem}
+.type-desc{font-size:.68rem;color:var(--muted);font-weight:300;line-height:1.5}
+
+/* ── REFERENCES ── */
+.ref-section{margin-bottom:4rem}
+.ref-row{display:flex;gap:.75rem;margin-bottom:.75rem}
+.ref-input{
+  flex:1;background:var(--surface);border:1px solid var(--border);
+  padding:.72rem 1rem;font-size:.875rem;color:var(--text);
+  font-family:'Plus Jakarta Sans',sans-serif;outline:none;
+  transition:border-color .2s;border-radius:0;
+}
+.ref-input:focus{border-color:var(--amber)}
+.ref-input::placeholder{color:var(--muted)}
+.ref-add{
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:.68rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:.72rem 1.25rem;border:1px solid var(--border);background:transparent;
+  color:var(--muted);cursor:pointer;transition:all .2s;white-space:nowrap;
+}
+.ref-add:hover{border-color:var(--amber);color:var(--amber)}
+.ref-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.ref-tag{
+  font-size:.68rem;font-weight:500;padding:.28rem .75rem;
+  border:1px solid var(--border);background:var(--surface);color:var(--muted);
+  display:flex;align-items:center;gap:.4rem;cursor:pointer;transition:border-color .18s;
+}
+.ref-tag:hover{border-color:var(--rust);color:var(--rust)}
+.ref-tag svg{width:8px;height:8px}
+
+/* ── GENERATE ── */
+.gen-wrap{margin-bottom:4rem;text-align:center}
+.gen-btn{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:1.25rem;font-weight:400;letter-spacing:-.01em;
+  padding:1.1rem 3rem;background:var(--amber);color:#fff;
+  border:none;cursor:pointer;transition:all .22s var(--ease);
+  display:inline-flex;align-items:center;gap:.85rem;
+  box-shadow:0 4px 32px var(--amber-ring);
+}
+.gen-btn:hover{background:#b94608;transform:translateY(-2px);box-shadow:0 8px 40px var(--amber-ring)}
+.gen-btn:active{transform:translateY(0)}
+.gen-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.gen-note{font-size:.68rem;color:var(--muted);margin-top:.85rem;font-weight:300}
+
+/* ── OUTPUT ── */
+.output-section{display:none;animation:fadeUp .5s var(--ease)}
+.output-section.show{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+.output-label{
+  font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--amber);margin-bottom:.75rem;
+}
+.output-who{
+  font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;
+  letter-spacing:-.02em;color:var(--text);margin-bottom:1.5rem;font-style:italic;
+}
+.output-box{
+  background:var(--surface);border:1px solid var(--border);
+  padding:2.5rem;line-height:1.8;font-weight:300;font-size:.9rem;
+}
+.output-box h1{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:400;letter-spacing:-.02em;color:var(--text);margin:0 0 1rem}
+.output-box h2{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;letter-spacing:-.01em;color:var(--text);margin:2rem 0 .75rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.output-box h2:first-child{border-top:none;padding-top:0;margin-top:0}
+.output-box h3{font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin:1.5rem 0 .5rem}
+.output-box p{margin-bottom:1rem;color:rgba(240,235,226,.8)}
+.output-box strong{color:var(--text);font-weight:600}
+.output-box em{font-style:italic;color:var(--muted)}
+.output-box ul,.output-box ol{margin:.75rem 0 1rem 1.5rem;color:rgba(240,235,226,.75)}
+.output-box li{margin-bottom:.35rem}
+.output-box blockquote{
+  border-left:2px solid var(--amber);padding-left:1.25rem;margin:1.5rem 0;
+  font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:rgba(240,235,226,.7);
+}
+.output-box hr{border:none;border-top:1px solid var(--border);margin:2rem 0}
+.thinking{
+  display:flex;align-items:center;gap:1.25rem;padding:2rem;
+  font-size:.88rem;color:var(--muted);font-weight:300;font-style:italic;
+}
+.dots{display:flex;gap:.3rem}
+.dots span{width:5px;height:5px;background:var(--amber);animation:dot 1.2s ease-in-out infinite}
+.dots span:nth-child(2){animation-delay:.2s}
+.dots span:nth-child(3){animation-delay:.4s}
+@keyframes dot{0%,80%,100%{opacity:.15;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
+
+.output-actions{display:flex;gap:.6rem;margin-top:1.25rem}
+.act-btn{
+  font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:.5rem 1rem;border:1px solid var(--border);background:transparent;
+  color:var(--muted);cursor:pointer;transition:all .2s;
+}
+.act-btn:hover{border-color:var(--border-h);color:var(--text)}
+
+/* ── YMK CTA (after output) ── */
+.ymk-cta {
+  margin-top:2.5rem;background:var(--surface);border:1px solid var(--border);
+  padding:2rem 2.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;
+  position:relative;overflow:hidden;
+}
+.ymk-cta::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--amber),#F5943A,var(--amber));
+}
+.ymk-cta-label{
+  font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--amber);margin-bottom:.5rem;
+}
+.ymk-cta h3{
+  font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;
+  letter-spacing:-.01em;color:var(--text);margin-bottom:.4rem;line-height:1.3;
+}
+.ymk-cta p{font-size:.78rem;color:var(--muted);line-height:1.65;font-weight:300}
+.ymk-cta-btn{
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:.7rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  padding:.85rem 1.75rem;background:var(--amber);color:#fff;
+  border:none;cursor:pointer;transition:all .2s var(--ease);
+  white-space:nowrap;text-decoration:none;display:inline-block;
+  box-shadow:0 2px 16px var(--amber-ring);
+}
+.ymk-cta-btn:hover{background:#b94608;transform:translateY(-1px)}
+
+/* ── FOOTER ── */
+.tool-footer{
+  border-top:1px solid var(--border);
+  padding:2rem;margin-top:4rem;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+}
+.footer-brand{font-size:.7rem;color:var(--muted);font-weight:300}
+.footer-brand a{color:var(--amber);font-weight:600;transition:color .18s}
+.footer-brand a:hover{color:#F5943A}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:color .18s}
+.footer-links a:hover{color:var(--text)}
+
+.sep{border:none;border-top:1px solid var(--border);margin:0 0 3.5rem}
+.spacer{height:4rem}
+.err{color:#c0614a;font-family:'JetBrains Mono',monospace;font-size:.8rem;padding:1.5rem;background:rgba(192,97,74,.07);border:1px solid rgba(192,97,74,.2)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  .hero h1{font-size:2.4rem}
+  .genius-grid{grid-template-columns:1fr 1fr}
+  .type-grid{grid-template-columns:1fr 1fr}
+  .output-box{padding:1.5rem}
+  .ymk-cta{grid-template-columns:1fr}
+  header{padding:0 1.25rem}
+  .container{padding:0 1.25rem}
+  .hero-stats{flex-direction:column;gap:0}
+  .hero-stat{border-right:none;border-bottom:1px solid var(--border)}
+  .hero-stat:last-child{border-bottom:none}
+}
+</style>
+</head>
+<body>
+
+
+<!-- HEADER -->
+<header>
+  <a href="https://www.ymk.digital" class="logo-wrap">
+    <span class="logo-ymk">YMK <span>Digital</span></span>
+    <div class="logo-divider"></div>
+    <span class="logo-tool">BrandMind</span>
+    <span class="logo-badge">Beta</span>
+  </a>
+  <div class="header-right">
+    <a href="https://www.ymk.digital" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      ymk.digital
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="container">
+  <div class="hero">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-dot" aria-hidden="true"></div>
+      A free tool by Yashasvi Meenu Kashyap — YMK Digital
+    </div>
+    <h1>Think at the<br/><em>level of legends.</em><br/><strong>Build your brand brief.</strong></h1>
+    <p class="hero-sub">Pick a creative genius. Describe your brand. Get a full strategy — written in the voice of advertising's greatest minds. Free to use, powered by AI.</p>
+    <div class="hero-by">
+      Built by <a href="https://www.ymk.digital">Yashasvi Meenu Kashyap</a> — 15+ years · 9 agencies · Samsung, Honda, Pepsi
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>8</strong><span>Creative Legends</span></div>
+      <div class="hero-stat"><strong>8</strong><span>Output Formats</span></div>
+      <div class="hero-stat"><strong>∞</strong><span>Genius Fusions</span></div>
+    </div>
+  </div>
+
+  <!-- ── STEP 1: BRIEF ── -->
+  <div class="brief-wrap">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <span class="sec-title">Your Brand Brief</span>
+      <div class="sec-line"></div>
+    </div>
+
+    <div class="brief-tabs">
+      <button class="brief-tab active" onclick="switchTab('write',this)">✍ Write It Yourself</button>
+      <button class="brief-tab" onclick="switchTab('wizard',this)">🧭 Brief Builder Wizard</button>
+    </div>
+
+    <div class="brief-panel active" id="panel-write">
+      <textarea class="big-textarea" id="briefText" placeholder="Describe your brand, the challenge, your audience, what you want to achieve, and any constraints.&#10;&#10;Example: We're a D2C skincare brand targeting urban women 25–40 in India. We're launching a new SPF range and want a bold campaign that positions us against chemical-heavy multinationals, using honesty as our weapon…"></textarea>
+    </div>
+
+    <div class="brief-panel" id="panel-wizard">
+      <div class="wizard-wrap">
+        <div class="wizard-progress"><div class="wizard-bar" id="wizBar" style="width:14%"></div></div>
+        <div class="wizard-body" id="wizBody"></div>
+        <div class="wizard-nav">
+          <span class="wiz-step-info" id="wizStepInfo">Step 1 of 7</span>
+          <div class="wiz-nav-btns">
+            <button class="wiz-btn wiz-back" id="wizBack" onclick="wizPrev()" style="display:none">← Back</button>
+            <button class="wiz-btn wiz-next" id="wizNextBtn" onclick="wizNext()">Next →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 2: GENIUS ── -->
+  <div class="genius-section">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <span class="sec-title">Choose Your Creative Genius — Pick up to 3</span>
+      <div class="sec-line"></div>
+    </div>
+
+    <div class="genius-grid" id="geniusGrid">
+
+      <div class="genius-card" data-g="ogilvy" onclick="pickGenius(this)">
+        <div class="g-era">Classic · 1911–1999</div>
+        <div class="g-name">David Ogilvy</div>
+        <div class="g-role">Father of Advertising. Research-led persuasion & long-copy mastery.</div>
+        <div class="g-tag">Strategy + Copy</div>
+        <div class="g-check"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4,8 11,1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+
+      <div class="genius-card" data-g="burnett" onclick="pickGenius(this)">
+        <div class="g-era">Classic · 1891–1971</div>
+        <div class="g-name">Leo Burnett</div>
+        <div class="g-role">Storyteller of human truths. Creator of Marlboro Man & Tony the Tiger.</div>
+        <div class="g-tag">Icons + Stories</div>
+        <div class="g-check"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4,8 11,1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+
+      <div class="genius-card" data-g="rand" onclick="pickGenius(this)">
+        <div class="g-era">Modernist · 1914–1996</div>
+        <div class="g-name">Paul Rand</div>
+        <div class="g-role">Modernist. IBM, ABC, UPS. Visual systems that last forever.</div>
+        <div class="g-tag">Identity + Systems</div>
+        <div class="g-check"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4,8 11,1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+
+      <div class="genius-card" data-g="ive" onclick="pickGenius(this)">
+        <div class="g-era">Digital · 1967–</div>
+        <div class="g-name">Jony Ive</div>
+        <div class="g-role">The iMac, iPod, iPhone. Restraint as the loudest creative decision.</div>
+        <div class="g-tag">Design + Voice</div>
+        <div class="g-check"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4,8 11,1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+
+      <div class="genius-card" data-g="wieden" onclick="pickGenius(this)">
+        <div class="g-era">Modern · 1945–2022</div>
+        <div class="g-name">Dan Wieden</div>
+        <div class="g-role">Co-founder W+K. Wrote "Just Do It." Brands as cultural forces.</div>
+        <div class="g-tag">Culture + Courage</div>
+        <div class="g-check"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4,8 11,1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+
+      <div class="genius-card" data-g="bogusky" onclick="pickGenius(this)">
+        <div class="g-era">Provocateur · 1963–</div>
+        <div class="g-name">Alex Bogusky</div>
+        <div class="g-role">Most creative agency of the decade. PR-led, culture-hacking ideas.</div>
+        <div class="g-tag">PR + Disruption</div>
+        <div class="g-check"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4,8 11,1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+
+      <div class="genius-card" data-g="sutherland" onclick="pickGenius(this)">
+        <div class="g-era">Behavioural · 1965–</div>
+        <div class="g-name">Rory Sutherland</div>
+        <div class="g-role">Vice Chairman Ogilvy UK. Psycho-logic over logic. Alchemy of perception.</div>
+        <div class="g-tag">Behaviour + Reframe</div>
+        <div class="g-check"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4,8 11,1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+
+      <div class="genius-card" data-g="goodby" onclick="pickGenius(this)">
+        <div class="g-era">Craft · 1954–</div>
+        <div class="g-name">Jeff Goodby</div>
+        <div class="g-role">Got Milk? — wit that makes you feel and think simultaneously.</div>
+        <div class="g-tag">Wit + Craft</div>
+        <div class="g-check"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4,8 11,1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+
+    </div>
+
+    <div class="fusion-note" id="fusionNote">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      <span>Fusion mode: <strong id="fusionList"></strong> — their philosophies will be synthesised into one unified voice</span>
+    </div>
+  </div>
+
+  <!-- ── STEP 3: OUTPUT TYPE ── -->
+  <div class="types-section">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <span class="sec-title">What do you need?</span>
+      <div class="sec-line"></div>
+    </div>
+    <div class="type-grid" id="typeGrid">
+      <div class="type-card active" data-type="Full Campaign Strategy" onclick="toggleType(this)">
+        <div class="type-name">Full Campaign Strategy</div>
+        <div class="type-desc">End-to-end thinking — positioning, message, execution</div>
+      </div>
+      <div class="type-card" data-type="Brand Positioning Statement" onclick="toggleType(this)">
+        <div class="type-name">Brand Positioning</div>
+        <div class="type-desc">The single sentence that defines everything else</div>
+      </div>
+      <div class="type-card" data-type="Brand Voice & Tone Guide" onclick="toggleType(this)">
+        <div class="type-name">Voice & Tone Guide</div>
+        <div class="type-desc">How your brand speaks — rules, examples, don'ts</div>
+      </div>
+      <div class="type-card" data-type="Campaign Concept & Taglines" onclick="toggleType(this)">
+        <div class="type-name">Campaign Concepts</div>
+        <div class="type-desc">Big ideas, taglines, creative directions</div>
+      </div>
+      <div class="type-card" data-type="Target Audience Deep Dive" onclick="toggleType(this)">
+        <div class="type-name">Audience Deep Dive</div>
+        <div class="type-desc">Who they really are, what they really want</div>
+      </div>
+      <div class="type-card" data-type="Content Strategy & Pillars" onclick="toggleType(this)">
+        <div class="type-name">Content Strategy</div>
+        <div class="type-desc">Pillars, formats, channels, cadence</div>
+      </div>
+      <div class="type-card" data-type="Competitive Differentiation" onclick="toggleType(this)">
+        <div class="type-name">Differentiation Map</div>
+        <div class="type-desc">How to own a space no competitor has claimed</div>
+      </div>
+      <div class="type-card" data-type="Launch Plan" onclick="toggleType(this)">
+        <div class="type-name">Launch Plan</div>
+        <div class="type-desc">Sequenced actions for a brand or product launch</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 4: REFERENCES ── -->
+  <div class="ref-section">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <span class="sec-title">Inspiration References — Optional</span>
+      <div class="sec-line"></div>
+    </div>
+    <div class="ref-row">
+      <input type="text" class="ref-input" id="refIn" placeholder="Campaign, brand, URL, or describe something you love — e.g. 'Dove Real Beauty', 'Old Spice tone', 'Apple 1984 ad'"/>
+      <button class="ref-add" onclick="addRef()">+ Add</button>
+    </div>
+    <div class="ref-tags" id="refTags"></div>
+  </div>
+
+  <!-- GENERATE -->
+  <div class="gen-wrap">
+    <button class="gen-btn" id="genBtn" onclick="generate()">
+      Summon the Genius
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <circle cx="9" cy="9" r="7.5" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+        <path d="M9 5v8M5 9h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+        <path d="M9 2v1M9 15v1M2 9h1M15 9h1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="rate-msg" id="rateMsg">Usage limit reached for today. <a href="https://www.ymk.digital/#contact" target="_blank">Book a strategy call instead →</a></div>
+  </div>
+
+  <!-- OUTPUT -->
+  <div class="output-section" id="outputSec">
+    <hr class="sep"/>
+    <div class="sec-head">
+      <span class="sec-num">→</span>
+      <span class="sec-title">Creative Output</span>
+      <div class="sec-line"></div>
+    </div>
+    <div class="output-label" id="outputLabel">Generated by</div>
+    <div class="output-who" id="outputWho">—</div>
+    <div class="output-box" id="outputBox"></div>
+    <div class="output-actions">
+      <button class="act-btn" onclick="copyOut()">↗ Copy</button>
+      <button class="act-btn" onclick="generate()">⟳ Regenerate</button>
+      <button class="act-btn" onclick="resetTool()">↑ New Brief</button>
+    </div>
+
+    <!-- YMK CTA — appears after every output -->
+    <div class="ymk-cta" id="ymkCta">
+      <div>
+        <div class="ymk-cta-label">Liked what you saw?</div>
+        <h3>This is the AI version. The human version is sharper.</h3>
+        <p>Yashasvi Meenu Kashyap has 15+ years, 9 agencies, and campaigns for Samsung, Honda Cars and Pepsi behind her. A free 30-min strategy call costs nothing — and leaves you with clarity no tool can match.</p>
+      </div>
+      <a href="https://www.ymk.digital/#contact" target="_blank" class="ymk-cta-btn">Book a Free Call →</a>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+</div>
+
+<!-- FOOTER -->
+<div class="container">
+  <div class="tool-footer">
+    <div class="footer-brand">
+      A free tool by <a href="https://www.ymk.digital">YMK Digital</a> — Yashasvi Meenu Kashyap · Brand Strategist &amp; Creative Consultant
+    </div>
+    <div class="footer-links">
+      <a href="https://www.ymk.digital/#services">Services</a>
+      <a href="https://www.ymk.digital/#contact">Book a Call</a>
+      <a href="https://www.ymk.digital/#writing">Writing</a>
+    </div>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+// ── State ──
+// API key handled server-side via Cloudflare Worker proxy
+const PROXY_URL = 'https://ymk-brandmind.YOUR-SUBDOMAIN.workers.dev'; // ← replace after deploy
+let selected=[], outputTypes=['Full Campaign Strategy'], refs=[];
+let usageCount = 0;
+const USAGE_LIMIT = 5; // free uses per session
+
+// ── Wizard ──
+const wizSteps=[
+  {q:"What is your brand or product?",hint:"Name, category, what it does.",type:"text",key:"brand",ph:"e.g. Mamaearth — a natural skincare brand for mothers"},
+  {q:"Who is your target audience?",hint:"Age, gender, geography, lifestyle, mindset.",type:"text",key:"audience",ph:"e.g. Urban women 25–38, career-driven, conscious consumers in Tier 1 Indian cities"},
+  {q:"What is the core challenge or goal?",hint:"What problem are you solving or what do you want to achieve?",type:"text",key:"challenge",ph:"e.g. Launch our new SPF range and differentiate from chemical-heavy multinationals"},
+  {q:"What is your brand's personality or tone?",hint:"Pick all that apply.",type:"chips",key:"tone",options:["Bold & Provocative","Warm & Human","Witty & Playful","Premium & Refined","Honest & Transparent","Purposeful & Serious","Energetic & Youthful","Calm & Assured"]},
+  {q:"What's your competitive landscape like?",hint:"Who are you up against? Are you challenger or leader?",type:"text",key:"competition",ph:"e.g. Competing with Neutrogena, Lotus, and Lakme — we're the indie challenger"},
+  {q:"What stage is this for?",hint:"Helps calibrate scope of the strategy.",type:"chips",key:"stage",options:["Brand Launch","Product Launch","Rebranding","Seasonal Campaign","Always-On Marketing","Performance / Growth","Fundraising Pitch"]},
+  {q:"Any constraints or must-haves?",hint:"Budget signals, channels, regions, things to avoid.",type:"text",key:"constraints",ph:"e.g. Primarily digital, Instagram + YouTube, no celebrity endorsements, India-first"}
+];
+let wizStep=0;
+const wizData={};
+
+function switchTab(t,el){
+  document.querySelectorAll('.brief-tab').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.brief-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+t).classList.add('active');
+  if(t==='wizard') renderWiz();
+}
+
+function renderWiz(){
+  const s=wizSteps[wizStep];
+  document.getElementById('wizBar').style.width=((wizStep+1)/wizSteps.length*100)+'%';
+  document.getElementById('wizStepInfo').textContent=`Step ${wizStep+1} of ${wizSteps.length}`;
+  document.getElementById('wizBack').style.display=wizStep>0?'':'none';
+  document.getElementById('wizNextBtn').textContent=wizStep===wizSteps.length-1?'Build Brief ✓':'Next →';
+  let html=`<div class="wizard-question">${s.q}</div><div class="wizard-hint">${s.hint}</div>`;
+  if(s.type==='text'){
+    const val=wizData[s.key]||'';
+    html+=`<input class="wiz-input" id="wizInput" type="text" placeholder="${s.ph}" value="${val}" onkeydown="if(event.key==='Enter')wizNext()"/>`;
+  } else {
+    html+=`<div class="wiz-chips">${s.options.map(o=>`<button class="wiz-chip${(wizData[s.key]||[]).includes(o)?' on':''}" onclick="toggleWizChip(this,'${s.key}','${o}')">${o}</button>`).join('')}</div>`;
+  }
+  document.getElementById('wizBody').innerHTML=html;
+  const inp=document.getElementById('wizInput');
+  if(inp) setTimeout(()=>inp.focus(),50);
+}
+
+function toggleWizChip(el,key,val){
+  if(!wizData[key]) wizData[key]=[];
+  if(el.classList.contains('on')){el.classList.remove('on');wizData[key]=wizData[key].filter(x=>x!==val);}
+  else{el.classList.add('on');wizData[key].push(val);}
+}
+
+function wizNext(){
+  const s=wizSteps[wizStep];
+  if(s.type==='text'){const inp=document.getElementById('wizInput');if(inp)wizData[s.key]=inp.value.trim();}
+  if(wizStep<wizSteps.length-1){wizStep++;renderWiz();}
+  else{buildBriefFromWizard();switchTab('write',document.querySelector('.brief-tab'));}
+}
+
+function wizPrev(){if(wizStep>0){wizStep--;renderWiz();}}
+
+function buildBriefFromWizard(){
+  const d=wizData;
+  const tone=Array.isArray(d.tone)?d.tone.join(', '):'';
+  const stage=Array.isArray(d.stage)?d.stage.join(', '):'';
+  const parts=[
+    d.brand?`Brand/Product: ${d.brand}`:'',
+    d.audience?`Target Audience: ${d.audience}`:'',
+    d.challenge?`Core Challenge / Goal: ${d.challenge}`:'',
+    tone?`Brand Tone & Personality: ${tone}`:'',
+    d.competition?`Competitive Landscape: ${d.competition}`:'',
+    stage?`Campaign Stage: ${stage}`:'',
+    d.constraints?`Constraints & Must-Haves: ${d.constraints}`:'',
+  ].filter(Boolean);
+  document.getElementById('briefText').value=parts.join('\n\n');
+}
+
+// ── API handled via proxy — no key required ──
+
+// ── Genius ──
+const geniusNames={
+  ogilvy:'David Ogilvy',burnett:'Leo Burnett',rand:'Paul Rand',ive:'Jony Ive',
+  wieden:'Dan Wieden',bogusky:'Alex Bogusky',sutherland:'Rory Sutherland',goodby:'Jeff Goodby'
+};
+
+const personaPrompts={
+  ogilvy:`You are David Ogilvy — the father of modern advertising. You are rigorous, research-obsessed, and believe advertising exists to sell. You write with authority, wit, and deep consumer understanding. You believe the consumer is not a moron — she is your wife. Your frameworks: positioning, brand image built over time, long-copy persuasion, the importance of the headline (80% of the budget rides on it). You always start with "what is the consumer truth?" You hate cleverness without purpose. Every recommendation is grounded in evidence and sharpened with craft.`,
+  burnett:`You are Leo Burnett — the Chicago adman who believed every product has an inherent drama waiting to be discovered. You created Marlboro Man, Tony the Tiger, the Jolly Green Giant, Charlie the Tuna. You speak plainly, warmly, and powerfully. You find the human truth buried inside even the most ordinary product and make it mythic. You don't chase trends — you dig for timeless. You believe in the "common touch": reaching ordinary people with extraordinary ideas rooted in real life.`,
+  rand:`You are Paul Rand — the father of corporate modernism. You designed IBM, ABC, UPS, NeXT, Westinghouse. You believe design is the silent ambassador of a brand. You think in visual systems: geometry, symbol, colour, type. You are decisive and confident — great identity doesn't need explanation, it communicates instantly. You don't follow fashion. You create systems that outlive their creators. Your advice operates at the level of identity and visual logic. "Simplicity is not the goal. It is the by-product of a good idea and modest expectations."`,
+  ive:`You are Jony Ive — the designer behind the iMac, iPod, iPhone, iPad, and Apple's entire design language for three decades. You think in systems, not surfaces. You believe the best design is the design that has been removed — until only the essential remains. When you advise on brands, you look for coherence, material honesty, and experiences that feel inevitable. You are quiet, precise, and deeply principled. You never chase trends. Every recommendation is in service of clarity and deep human connection.`,
+  wieden:`You are Dan Wieden — co-founder of Wieden+Kennedy and the man who wrote "Just Do It." You believe brands can behave like people — with a real point of view, real contradictions, real courage. You worked with Nike for decades, turning a shoe company into a cultural force. You championed the idea that great advertising is uncomfortable, surprising, and true. You are anti-formula. You believe the most powerful brand statements come from cultural insight, not market research. You are not afraid of ambiguity or creative risk.`,
+  bogusky:`You are Alex Bogusky — the most creative ad person of the 2000s, three-time Cannes Agency of the Year. You believe the best advertising is so culturally embedded it becomes news. You hack culture, not media budgets. You work backward from the story a journalist would write. You designed "Truth" anti-tobacco campaigns and Burger King's viral renaissance. Your ideas are participatory, shareable, and inherently PR-able. You believe the brand is a behaviour, not a logo.`,
+  sutherland:`You are Rory Sutherland — Vice Chairman of Ogilvy UK, author of Alchemy, and champion of psycho-logic over logic. You believe that most brand and marketing problems are actually perception problems in disguise. You apply behavioural economics: loss aversion, signalling theory, framing effects, the power of meaning over mechanism. You question the obvious solution — the one that makes economic sense — because humans are not rational. "The opposite of a good idea can also be a good idea." You find the irrational insight that unlocks disproportionate value.`,
+  goodby:`You are Jeff Goodby — co-founder of Goodby Silverstein & Partners, creator of "Got Milk?" You believe in the power of wit — not puns, but genuinely unexpected ways of looking at something that make you feel and think simultaneously. "Got Milk?" worked because it started from a true insight: you only notice milk when it's gone. You look for the unexpected angle that recontextualises the product and makes the audience laugh, then believe.`
+};
+
+function pickGenius(card){
+  const g=card.dataset.g;
+  if(card.classList.contains('active')){
+    card.classList.remove('active');
+    selected=selected.filter(x=>x!==g);
+  } else {
+    if(selected.length>=3){
+      const first=selected.shift();
+      document.querySelector(`.genius-card[data-g="${first}"]`).classList.remove('active');
+    }
+    card.classList.add('active');
+    selected.push(g);
+  }
+  const fn=document.getElementById('fusionNote');
+  const fl=document.getElementById('fusionList');
+  if(selected.length>1){fn.classList.add('show');fl.textContent=selected.map(g=>geniusNames[g]).join(' × ');}
+  else fn.classList.remove('show');
+}
+
+function toggleType(card){
+  card.classList.toggle('active');
+  const t=card.dataset.type;
+  if(card.classList.contains('active')) outputTypes.push(t);
+  else outputTypes=outputTypes.filter(x=>x!==t);
+}
+
+function addRef(){
+  const inp=document.getElementById('refIn');
+  const v=inp.value.trim();
+  if(!v) return;
+  refs.push(v);
+  inp.value='';
+  renderRefs();
+}
+document.getElementById('refIn').addEventListener('keydown',e=>{if(e.key==='Enter')addRef();});
+
+function renderRefs(){
+  document.getElementById('refTags').innerHTML=refs.map((r,i)=>
+    `<div class="ref-tag" onclick="removeRef(${i})">${r}<svg viewBox="0 0 8 8" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="1" y1="1" x2="7" y2="7"/><line x1="7" y1="1" x2="1" y2="7"/></svg></div>`
+  ).join('');
+}
+function removeRef(i){refs.splice(i,1);renderRefs();}
+
+// ── Generate ──
+async function generate(){
+  const brief=document.getElementById('briefText').value.trim();
+  if(!brief){alert('Please write or build your brand brief first.');return;}
+  if(selected.length===0){alert('Please select at least one Creative Genius.');return;}
+  if(outputTypes.length===0){alert('Please select at least one output type.');return;}
+
+  const sec=document.getElementById('outputSec');
+  const box=document.getElementById('outputBox');
+  const btn=document.getElementById('genBtn');
+  const cta=document.getElementById('ymkCta');
+
+  sec.classList.add('show');
+  cta.style.display='none';
+  btn.disabled=true;
+  btn.innerHTML='Thinking…';
+
+  const names=selected.map(g=>geniusNames[g]);
+  document.getElementById('outputWho').textContent=names.join(' × ');
+  document.getElementById('outputLabel').textContent=`Generated in the voice of`;
+  box.innerHTML=`<div class="thinking"><span>The ${names.join(' & ')} synthesis is forming</span><div class="dots"><span></span><span></span><span></span></div></div>`;
+
+  const systemPrompt=selected.length===1
+    ?personaPrompts[selected[0]]
+    :`You are a singular creative mind that has deeply absorbed the philosophies of these legends:\n\n${selected.map(g=>`**${geniusNames[g]}:**\n${personaPrompts[g]}`).join('\n\n---\n\n')}\n\nDo not describe each perspective separately. Fuse them into one unified, powerful voice that is greater than the sum of its parts. The output should feel like one genius, not a committee.`;
+
+  const refPart=refs.length?`\n\nINSPIRATION REFERENCES: Use these as creative fuel — don't copy, let their spirit inform direction: ${refs.join('; ')}`:'' ;
+
+  const userPrompt=`BRAND BRIEF:\n${brief}${refPart}\n\nDELIVERABLES:\n${outputTypes.join(', ')}\n\nDeliver a comprehensive, actionable response. Use clear headers. Be specific, bold, opinionated, and distinctive. Never be vague or generic. This should feel like it came from the world's finest creative agency — charged with intelligence, strategic conviction, and creative ambition. Make it genuinely useful.`;
+
+  // Check session usage limit
+  if(usageCount >= USAGE_LIMIT){
+    document.getElementById('rateMsg').classList.add('show');
+    btn.disabled=false;
+    btn.innerHTML='Summon the Genius <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7.5" stroke="currentColor" stroke-width="1" opacity="0.4"/><path d="M9 5v8M5 9h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/><path d="M9 2v1M9 15v1M2 9h1M15 9h1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
+    return;
+  }
+
+  try{
+    const r = await fetch(PROXY_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ system: systemPrompt, user: userPrompt })
+    });
+    if(!r.ok){
+      const e = await r.json().catch(()=>({}));
+      throw new Error(e.error || `HTTP ${r.status}`);
+    }
+    const d = await r.json();
+    const text = d.content?.[0]?.text || '';
+    box.innerHTML = md(text);
+    usageCount++;
+    cta.style.display='grid';
+    cta.scrollIntoView({behavior:'smooth',block:'nearest'});
+    // Show rate message when limit reached
+    if(usageCount >= USAGE_LIMIT){
+      document.getElementById('rateMsg').classList.add('show');
+    }
+  } catch(e){
+    box.innerHTML=`<div class="err">Could not reach the strategy engine. Please try again in a moment. <br><small>${e.message}</small></div>`;
+  }
+
+  btn.disabled=false;
+  btn.innerHTML='Summon the Genius <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7.5" stroke="currentColor" stroke-width="1" opacity="0.4"/><path d="M9 5v8M5 9h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/><path d="M9 2v1M9 15v1M2 9h1M15 9h1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
+}
+
+function md(t){
+  return t
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/^# (.+)$/gm,'<h1>$1</h1>')
+    .replace(/^## (.+)$/gm,'<h2>$1</h2>')
+    .replace(/^### (.+)$/gm,'<h3>$1</h3>')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g,'<em>$1</em>')
+    .replace(/^> (.+)$/gm,'<blockquote>$1</blockquote>')
+    .replace(/^---$/gm,'<hr/>')
+    .replace(/^[-•] (.+)$/gm,'<li>$1</li>')
+    .replace(/^\d+\. (.+)$/gm,'<li>$1</li>')
+    .replace(/(<li>[\s\S]+?<\/li>)(\n(?!<li>))/g,'<ul>$1</ul>\n')
+    .replace(/\n\n/g,'</p><p>')
+    .replace(/^(?!<[hbluop])(.+)$/gm,m=>m.startsWith('<')?m:`<p>${m}</p>`)
+    .replace(/<p><\/p>/g,'');
+}
+
+function copyOut(){
+  navigator.clipboard.writeText(document.getElementById('outputBox').innerText).then(()=>{
+    event.target.textContent='✓ Copied';
+    setTimeout(()=>event.target.textContent='↗ Copy',2000);
+  });
+}
+
+function resetTool(){
+  document.getElementById('outputSec').classList.remove('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// init wizard
+renderWiz();
+</script>
+</body>
+</html>
